@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorLightWhite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <View
+                android:id="@+id/orange_rectangle"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/orange_rectangle" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginTop="32dp"
+                android:contentDescription="@string/todo"
+                android:src="@drawable/baseline_keyboard_arrow_left_white_48"
+                android:tint="@color/colorLightWhite"
+                app:srcCompat="@drawable/baseline_keyboard_arrow_left_white_48" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/orange_rectangle"
+                android:layout_marginBottom="8dp"
+                android:layout_toEndOf="@id/imageView2"
+                android:layout_toRightOf="@id/imageView2"
+                android:text="@string/back"
+                android:textColor="@color/colorLightWhite"
+                android:textSize="28sp" />
+
+            <View
+                android:id="@+id/top_view_inner_radii"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/orange_rectangle"
+                android:background="@drawable/topview_inner_radii" />
+
+            <View
+                android:id="@+id/top_view_inner_radii_right"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/orange_rectangle"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/topview_inner_raddii_right" />
+
+            <ImageView
+                android:id="@+id/image1"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_below="@id/orange_rectangle"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:contentDescription="@string/todo"
+                android:scaleType="fitXY"
+                android:src="@drawable/thinkanddesign"
+                app:srcCompat="@drawable/thinkanddesign" />
+
+
+            <TextView
+                android:id="@+id/ui_ux_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/image1"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/uiAndUx2"
+                android:textColor="@color/colorBlack"
+                android:textSize="24sp"
+                app:fontFamily="sans-serif-medium" />
+
+            <TextView
+                android:id="@+id/name_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ui_ux_txt"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:text="@string/nameHint"
+                android:textColor="@color/colorGrayDark"
+                android:textSize="18sp"
+                app:fontFamily="sans-serif-medium" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name_txt"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                app:tabIndicatorColor="@color/colorBlack">
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/lectures" />
+
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/resource" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tab_layout"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="32dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/num1_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/num1"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/time1_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_toEndOf="@id/num1_txt"
+                        android:layout_toRightOf="@id/num1_txt"
+                        android:text="@string/time1"
+                        android:textColor="@color/colorGrayDark"
+                        android:textStyle="bold"
+                        tools:ignore="RelativeOverlap" />
+
+                    <TextView
+                        android:id="@+id/title1_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/time1_txt"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_toEndOf="@id/num1_txt"
+                        android:layout_toRightOf="@id/num1_txt"
+                        android:text="@string/welcomeToTheCourse"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp"
+                        app:fontFamily="sans-serif-medium" />
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/baseline_play_circle_filled_black_48"
+                        android:tint="@color/colorOrange" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp">
+
+                    <TextView
+                        android:id="@+id/num2_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/num2"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/time2_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_toEndOf="@id/num2_txt"
+                        android:layout_toRightOf="@id/num2_txt"
+                        android:text="@string/time2"
+                        android:textColor="@color/colorGrayDark"
+                        android:textStyle="bold"
+                        tools:ignore="RelativeOverlap" />
+
+                    <TextView
+                        android:id="@+id/title2_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/time2_txt"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_toEndOf="@id/num2_txt"
+                        android:layout_toRightOf="@id/num2_txt"
+                        android:text="@string/intro"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp"
+                        app:fontFamily="sans-serif-medium" />
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/baseline_play_circle_filled_black_48"
+                        android:tint="@color/colorOrange" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp">
+
+                    <TextView
+                        android:id="@+id/num3_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/num3"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/time3_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_toEndOf="@id/num3_txt"
+                        android:layout_toRightOf="@id/num3_txt"
+                        android:text="@string/time3"
+                        android:textColor="@color/colorGrayDark"
+                        android:textStyle="bold"
+                        tools:ignore="RelativeOverlap" />
+
+                    <TextView
+                        android:id="@+id/title3_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/time3_txt"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_toEndOf="@id/num3_txt"
+                        android:layout_toRightOf="@id/num3_txt"
+                        android:text="@string/process"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp"
+                        app:fontFamily="sans-serif-medium" />
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/baseline_play_circle_filled_black_48"
+                        android:tint="@color/colorOrange" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp">
+
+                    <TextView
+                        android:id="@+id/num4_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/num4"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/time4_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_toEndOf="@id/num4_txt"
+                        android:layout_toRightOf="@id/num4_txt"
+                        android:text="@string/time4"
+                        android:textColor="@color/colorGrayDark"
+                        android:textStyle="bold"
+                        tools:ignore="RelativeOverlap" />
+
+                    <TextView
+                        android:id="@+id/title4_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/time4_txt"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_toEndOf="@id/num4_txt"
+                        android:layout_toRightOf="@id/num4_txt"
+                        android:text="@string/perspective"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp"
+                        app:fontFamily="sans-serif-medium" />
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/baseline_play_circle_filled_black_48"
+                        android:tint="@color/colorOrange" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="48dp">
+
+                    <TextView
+                        android:id="@+id/num5_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:text="@string/num5"
+                        android:textColor="@color/colorOrange"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/time5_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_toEndOf="@id/num5_txt"
+                        android:layout_toRightOf="@id/num5_txt"
+                        android:text="@string/time1"
+                        android:textColor="@color/colorGrayDark"
+                        android:textStyle="bold"
+                        tools:ignore="RelativeOverlap" />
+
+                    <TextView
+                        android:id="@+id/title5_txt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/time5_txt"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginLeft="32dp"
+                        android:layout_toEndOf="@id/num5_txt"
+                        android:layout_toRightOf="@id/num5_txt"
+                        android:text="@string/welcomeToTheCourse"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="18sp"
+                        app:fontFamily="sans-serif-medium" />
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/baseline_play_circle_filled_black_48"
+                        android:tint="@color/colorOrange" />
+
+                </RelativeLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_navigation_shape"
+        app:itemIconTint="@color/colorOrange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/navigation_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

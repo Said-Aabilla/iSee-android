@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:targetApi="lollipop">
+
+                <View
+                    android:id="@+id/top_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="155dp"
+                    android:background="@drawable/top_design_shape" />
+
+                <View
+                    android:id="@+id/top_view_inner_radii"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/top_view"
+                    android:background="@drawable/topview_inner_radii" />
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView2"
+                    android:gravity="center"
+                    android:text="@string/my_courses"
+                    android:textColor="@color/colorLightWhite"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    app:fontFamily="serif" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="32dp"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/baseline_keyboard_arrow_left_white_48"
+                    android:tint="@color/colorLightWhite"
+                    app:srcCompat="@drawable/baseline_keyboard_arrow_left_white_48" />
+
+                <View
+                    android:id="@+id/circle_view"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="-60dp"
+                    android:layout_marginEnd="-50dp"
+                    android:layout_marginRight="-30dp"
+                    android:background="@drawable/faint_circle" />
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="16dp"
+                    android:contentDescription="@string/todo"
+                    android:tint="@color/colorLightWhite"
+                    app:srcCompat="@drawable/baseline_search_white_48" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cross_corner_curve_background"
+                android:elevation="8dp"
+                tools:targetApi="lollipop">
+
+                <ImageView
+                    android:id="@+id/course_img"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:padding="8dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/design_sub_categories_1"
+                    app:srcCompat="@drawable/design_sub_categories_1" />
+
+                <TextView
+                    android:id="@+id/course_txt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toEndOf="@id/course_img"
+                    android:layout_toRightOf="@id/course_img"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center_vertical"
+                    android:text="@string/uiAndUx"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/course_txt"
+                    android:layout_toRightOf="@id/course_txt"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_play_video"
+                    android:tint="#FDA04F" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cross_corner_curve_background"
+                android:elevation="8dp"
+                tools:targetApi="lollipop">
+
+                <ImageView
+                    android:id="@+id/course_img2"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:padding="8dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/geometric_shapes_"
+                    app:srcCompat="@drawable/geometric_shapes_" />
+
+                <TextView
+                    android:id="@+id/course_txt2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toEndOf="@id/course_img2"
+                    android:layout_toRightOf="@id/course_img2"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center_vertical"
+                    android:text="@string/characterArt"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/course_txt2"
+                    android:layout_toRightOf="@id/course_txt2"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_play_video"
+                    android:tint="#FDA04F" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/cross_corner_curve_background"
+                android:elevation="8dp"
+                tools:targetApi="lollipop">
+
+                <ImageView
+                    android:id="@+id/course_img3"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/todo"
+                    android:padding="8dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/drawtree"
+                    app:srcCompat="@drawable/drawtree" />
+
+                <TextView
+                    android:id="@+id/course_txt3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_toEndOf="@id/course_img3"
+                    android:layout_toRightOf="@id/course_img3"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center_vertical"
+                    android:text="@string/UltimateDrawing"
+                    android:textSize="20sp" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@id/course_txt3"
+                    android:layout_toRightOf="@id/course_txt3"
+                    android:contentDescription="@string/todo"
+                    android:src="@drawable/ic_play_video"
+                    android:tint="#FDA04F" />
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_above="@+id/Bottom_menu"
+        android:background="@drawable/top_corner_curve"
+        android:backgroundTint="#FDA04F"
+        android:orientation="horizontal"
+        tools:targetApi="lollipop">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/design_sub_categories_1"
+            android:contentDescription="@string/todo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center_vertical"
+            android:text="@string/uiAndUx"
+            android:textColor="#fff"
+            android:textSize="22sp" />
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_play_video"
+            android:tint="#fff" />
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/Bottom_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/top_corner_curve"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@drawable/bottom_item_selector"
+        app:menu="@menu/navigation_menu" />
+
+</RelativeLayout>

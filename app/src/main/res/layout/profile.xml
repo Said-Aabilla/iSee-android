@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F78D3A"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/top_corner_curve"
+        android:orientation="vertical"
+        android:paddingTop="100dp">
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/xxxxx_xy_yyyyy"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/xxxxxyyyy_gmail_com"
+            android:textColor="#000"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="22dp"
+            android:text="@string/account_settings"
+            android:textSize="24sp"
+            app:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:id="@+id/account_security"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            android:drawableStart="@drawable/ic_account"
+            android:drawableLeft="@drawable/ic_account"
+            android:text="@string/account_security"
+            android:textSize="22sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="22dp"
+            android:text="@string/support"
+            android:textSize="24sp"
+            app:fontFamily="sans-serif-black" />
+
+        <TextView
+            android:id="@+id/about_academy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            android:drawableStart="@drawable/ic_help"
+            android:drawableLeft="@drawable/ic_help"
+            android:text="@string/about_academy"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/help_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_help"
+            android:drawableLeft="@drawable/ic_help"
+            android:text="@string/help_and_feedback"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/contact_us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_phone"
+            android:drawableLeft="@drawable/ic_phone"
+            android:text="@string/contact_us"
+            android:textSize="22sp" />
+
+        <TextView
+            android:id="@+id/share_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            android:layout_marginTop="15dp"
+            android:drawableStart="@drawable/ic_share"
+            android:drawableLeft="@drawable/ic_share"
+            android:text="@string/share_the_academy_app"
+            android:textSize="22sp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="70dp"
+            android:background="@drawable/button_border"
+            android:paddingLeft="40dp"
+            android:paddingRight="40dp"
+            android:text="@string/logout"
+            android:textAllCaps="false"
+            android:textColor="#F78D3A"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:fontFamily="sans-serif" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_above="@+id/layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="-60dp"
+        android:background="@drawable/round_image_background"
+        android:contentDescription="@string/todo" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/Bottom_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/top_corner_curve"
+        android:elevation="5dp"
+        app:itemIconSize="30dp"
+        app:itemIconTint="@drawable/bottom_item_selector"
+        app:menu="@menu/navigation_menu"
+        tools:targetApi="lollipop" />
+
+</RelativeLayout>

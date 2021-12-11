@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="@drawable/lower_curve">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="15dp"
+            android:gravity="center_horizontal"
+            android:text="@string/all_categories"
+            android:textColor="#fff"
+            android:textSize="32sp" />
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/back_button_white" />
+
+        <ImageView
+            android:id="@+id/search_buton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_margin="25dp"
+            android:contentDescription="@string/todo"
+            android:src="@drawable/ic_search" />
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="bottom"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:layout_width="160dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/todo"
+                        android:src="@drawable/marketing"
+                        app:srcCompat="@drawable/marketing" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/marketing"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        app:fontFamily="sans-serif-black" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/todo"
+                        android:padding="30dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/bussiness"
+                        app:srcCompat="@drawable/bussiness" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/bussiness"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        app:fontFamily="sans-serif-black" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="bottom"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/todo"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/maths"
+                        app:srcCompat="@drawable/maths" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/mathematics"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        app:fontFamily="sans-serif-black" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/todo"
+                        android:padding="30dp"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/design"
+                        app:srcCompat="@drawable/design" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/design"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        app:fontFamily="sans-serif-black" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="bottom"
+                    app:cardBackgroundColor="#FFC107"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/todo"
+                        android:scaleType="centerCrop" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        app:fontFamily="sans-serif-black" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    app:cardBackgroundColor="#03A9F4"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/todo"
+                        android:padding="30dp"
+                        android:scaleType="centerCrop" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        app:fontFamily="sans-serif-black" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="bottom"
+                    app:cardBackgroundColor="#8BC34A"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/todo"
+                        android:scaleType="centerCrop" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        app:fontFamily="sans-serif-black" />
+
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="170dp"
+                    android:layout_height="200dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginLeft="20dp"
+                    app:cardBackgroundColor="#F5483F"
+                    app:cardCornerRadius="20dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/todo"
+                        android:padding="30dp"
+                        android:scaleType="centerCrop" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="5dp"
+                        android:textColor="#000"
+                        android:textSize="20sp"
+                        app:fontFamily="sans-serif-black" />
+
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/Bottom_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/top_corner_curve"
+                app:itemIconSize="30dp"
+                app:itemIconTint="@drawable/bottom_item_selector"
+                app:menu="@menu/navigation_menu" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

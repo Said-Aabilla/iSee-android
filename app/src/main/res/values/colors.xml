@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+
+    <color name="tan_background">#FFF7DA</color>
+    <color name="colorWhite">#fff</color>
+    <color name="colorLightWhite">#f5f5f5</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorOrange">#FF9800</color>
+    <color name="colorGray">#BDBDBD</color>
+    <color name="colorOrangePrimary">#FFC107</color>
+    <color name="colorOrangeDark">#f57c00</color>
+    <color name="colorOrangeFaint">#fdc999</color>
+    <color name="colorGrayDark">#757575</color>
+</resources>
