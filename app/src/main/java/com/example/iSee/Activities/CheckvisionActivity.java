@@ -1,14 +1,16 @@
-package com.example.iSee;
+package com.example.iSee.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+import com.example.iSee.R;
 
-public class MainActivity extends AppCompatActivity {
 
+public class CheckvisionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_welcome);
+        setContentView(R.layout.checkvision_activity);
+
     }
+
 }

@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">iSee</string>
-    <string name="welcome">Welcome to Academy</string>
+    <string name="welcome">Welcome to iSee</string>
     <string name="explore">Explore us</string>
     <string name="welcomescreen">welcomescreen</string>
+    <string name="facebook_app_id">[APP_ID]</string> <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
     <string name="Or">Or</string>
     <string name="login">Log in</string>
     <string name="signup">Sign up</string>
@@ -43,8 +44,8 @@
     <string name="email_confirmation">Enter your Email to confirm\nyour identity\.</string>
     <string name="enterEmail">Enter Email</string>
     <string name="success">Success!</string>
-    <string name="successfulPayment">You successfully made a payment!</string>
-    <string name="startCourse">Start Course Now</string>
+    <string name="successfulPayment">Let\'s seeing the world together</string>
+    <string name="startCourse">Start Now</string>
     <string name="backToHome">Back to Home</string>
     <string name="my_wish_list">My Wishlist</string>
     <string name="Cart">Cart</string>

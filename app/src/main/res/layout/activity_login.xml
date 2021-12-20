@@ -17,36 +17,41 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorLightWhite">
+            android:background="@color/colorWhite">
 
             <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="48dp"
+                android:id="@+id/IconBack"
+                android:layout_width="40dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
                 android:layout_marginTop="32dp"
                 android:contentDescription="@string/todo"
                 android:src="@drawable/baseline_arrow_back_black_48"
-                android:tint="@color/colorOrangeDark" />
+                android:tint="@color/colorOrange" />
+
 
             <View
                 android:id="@+id/circle_view"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_alignParentEnd="true"
+                android:layout_width="117dp"
+                android:layout_height="96dp"
+                android:layout_alignParentEnd="false"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="-20dp"
-                android:layout_marginEnd="-30dp"
-                android:layout_marginRight="-30dp"
-                android:background="@drawable/circle" />
-
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginRight="50dp"
+                android:background="@drawable/isee" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/circle_view"
-                android:layout_margin="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginRight="32dp"
+                android:layout_marginBottom="32dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -73,14 +78,14 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/username_hint"
+                    android:hint="jjjqsdhh"
                     android:textColorHint="@color/colorBlack"
                     app:boxStrokeColor="@color/colorOrange"
                     app:boxStrokeWidthFocused="2dp"
                     app:endIconMode="clear_text"
                     app:endIconTint="@color/colorBlack"
                     app:hintTextColor="@color/colorBlack"
-                    app:startIconDrawable="@drawable/baseline_perm_identity_black_18"
+                    app:startIconDrawable="@drawable/baseline_account_circle_white_24"
                     app:startIconTint="@color/colorBlack">
 
 
@@ -121,7 +126,7 @@
 
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/login_password_editText"
+                        android:id="@+id/user_password"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:inputType="textPassword"
@@ -161,7 +166,7 @@
                 </RelativeLayout>
 
                 <TextView
-                    android:id="@+id/login_txt"
+                    android:id="@+id/login_btn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="32dp"
@@ -189,7 +194,7 @@
                         app:fontFamily="sans-serif-medium" />
 
                     <TextView
-                        android:id="@+id/signup_txt"
+                        android:id="@+id/signup_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
@@ -236,3 +241,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -47,13 +47,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/successfulPayment"
+                android:text=" Let's seeing the world together"
                 android:textColor="@color/colorLightWhite"
                 android:textSize="18sp"
                 app:fontFamily="sans-serif-medium" />
 
             <TextView
-                android:id="@+id/login_txt"
+                android:id="@+id/login_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="96dp"
@@ -67,7 +67,7 @@
 
 
             <TextView
-                android:id="@+id/signup_txt"
+                android:id="@+id/signup_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
