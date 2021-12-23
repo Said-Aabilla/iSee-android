@@ -16,44 +16,73 @@
         android:orientation="vertical"
         android:paddingTop="100dp">
 
+
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/account_security"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/xxxxx_xy_yyyyy"
-            android:textColor="#000"
+            android:layout_marginBottom="39dp"
+            android:layout_marginStart="22dp"
+            android:layout_marginLeft="22dp"
+            android:text="Volunteer"
+            android:textAlignment="center"
             android:textSize="22sp"
-            android:textStyle="bold" />
+            android:gravity="center_horizontal" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="39dp"
+            android:layout_margin="22dp"
+            android:drawableStart="@drawable/ic_account"
+            android:drawableLeft="@drawable/ic_account"
+            android:text="Account Informations"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:fontFamily="sans-serif-black"
+            android:gravity="center_horizontal" />
         <TextView
             android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="@string/xxxxxyyyy_gmail_com"
+            android:layout_marginBottom="39dp"
             android:textColor="#000"
             android:textSize="22sp" />
-
         <TextView
+            android:id="@+id/username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="22dp"
-            android:text="@string/account_settings"
-            android:textSize="24sp"
-            app:fontFamily="sans-serif-black" />
-
+            android:text="Username :"
+            android:layout_marginLeft="30dp"
+            android:textAlignment="textStart"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="start" />
         <TextView
-            android:id="@+id/account_security"
+            android:id="@+id/lastname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="22dp"
-            android:layout_marginLeft="22dp"
-            android:drawableStart="@drawable/ic_account"
-            android:drawableLeft="@drawable/ic_account"
-            android:text="@string/account_security"
-            android:textSize="22sp" />
-
+            android:textAlignment="textStart"
+            android:text="Lastname :"
+            android:layout_marginLeft="30dp"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="start" />
+        <TextView
+            android:id="@+id/firstname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Firstname :"
+            android:layout_marginLeft="30dp"
+            android:textAlignment="textStart"
+            android:textColor="#000"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="start" />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
