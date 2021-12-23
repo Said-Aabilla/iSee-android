@@ -3,6 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/about_courses.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_forgot_password.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_hello_main.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_login.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_new_password.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_pincode.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_signup.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_success.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_welcome.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_welcome_to_course.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/checkvision_activity.xml" value="0.25" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/live_stream_item.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/profile.xml" value="0.25" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/search.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/terms_of_use.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/menu/navigation_menu.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee-android/app/src/main/res/drawable/login_bordershape.xml" value="0.22037037037037038" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee-android/app/src/main/res/layout/about_courses.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_cart.xml" value="0.10182370820668693" />
