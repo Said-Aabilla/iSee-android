@@ -6,12 +6,34 @@ import android.util.Patterns;
 public class User implements IUser{
 
    private String fullname, email,password;
+   private String langage;
+   private boolean vision;
 
    public User(String email,String password) {
         this.email=email;
         this.password=password;
     }
 
+    public User(String email, String password, String fullname, String langage, boolean vision) {
+       this.email=email;
+       this.password=password;
+       this.fullname=fullname;
+       this.langage=langage;
+       this.vision=vision;
+    }
+
+      @Override
+      public String getFullname() {
+          return fullname;
+      }
+    @Override
+    public boolean getVision() {
+        return vision;
+    }
+    @Override
+    public String getLanguage() {
+        return langage;
+    }
     @Override
     public String getEmail() {
         return email;

@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.iSee.Activities.LoginActivity;
+import com.example.iSee.Models.User;
 import com.example.iSee.R;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -20,8 +24,7 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
+        Toast.makeText(this,getIntent().getStringExtra("fullname").toString(),Toast.LENGTH_LONG).show();
 
     }
 }

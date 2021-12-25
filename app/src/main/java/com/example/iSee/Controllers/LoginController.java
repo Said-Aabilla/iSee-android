@@ -1,6 +1,9 @@
 package com.example.iSee.Controllers;
 
-import com.example.iSee.Models.LoginResult;
+import android.content.Context;
+import android.content.Intent;
+
+import com.example.iSee.Activities.ProfileActivity;
 import com.example.iSee.Models.User;
 import com.example.iSee.Services.IRetrofit;
 import com.example.iSee.Views.ILoginView;
@@ -22,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginController implements ILoginController {
 //Parameters & globals variables
-String BASE_URL="http://10.0.2.2:3000";
+String BASE_URL="https://isee-backend.herokuapp.com";
     Retrofit retrofit = new Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -41,7 +44,7 @@ String BASE_URL="http://10.0.2.2:3000";
 
     @Override
     public void onLogin(String email, String password) {
-        User user = new User(email, password);
+        final User user = new User(email, password);
         int signupcode = user.isValid();
         if (signupcode == 0) {
             loginView.onLoginFailed("enter the email");
@@ -57,25 +60,24 @@ String BASE_URL="http://10.0.2.2:3000";
             map.put("email", email);
             map.put("password", password);
 
-            Call<LoginResult> call = retrofitInterface.executeLogin(map);
+            Call<User> call = retrofitInterface.executeLogin(map);
 
-            call.enqueue(new Callback<LoginResult>() {
+            call.enqueue(new Callback<User>() {
                 @Override
-                public void onResponse(Call<LoginResult> call, Response<LoginResult> response) {
+                public void onResponse(Call<User> call, Response<User> response) {
 
                     if (response.code() == 200) {
-                        LoginResult result = response.body();
-                        loginView.onLoginSuccess("Login Success !");
+                        User result = response.body();
+                        loginView.onLoginSuccess("Login Success !",result);
 
-
-                    }
+                        }
                      else if (response.code() == 409) {
                         loginView.onLoginFailed(" User not found ! Try Signup !!");
                     }
                 }
 
                 @Override
-                public void onFailure(Call<LoginResult> call, Throwable t) {
+                public void onFailure(Call<User> call, Throwable t) {
 
                 }
             });
@@ -124,5 +126,6 @@ String BASE_URL="http://10.0.2.2:3000";
             throw new RuntimeException(e);
         }
     }
+
 
 }

@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.signup_btn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(MainActivity.this,SignupActivity.class);
+                Intent intent =new Intent(MainActivity.this,CheckvisionActivity.class);
                 startActivity(intent);
 
     }

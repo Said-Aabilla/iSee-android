@@ -53,7 +53,7 @@
                 app:fontFamily="sans-serif-medium" />
 
             <TextView
-                android:id="@+id/login_btn"
+                android:id="@+id/start"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="96dp"
@@ -67,7 +67,7 @@
 
 
             <TextView
-                android:id="@+id/signup_btn"
+                android:id="@+id/back_to_welcome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

@@ -16,18 +16,18 @@ public class SuccessActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_success);
 
-        (findViewById(R.id.login_btn)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.start)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), ProfileActivity.class);
+                Intent intent=new Intent(getApplicationContext(), HomeActivity.class);
                 startActivity(intent);
             }
         });
 
-        (findViewById(R.id.signup_btn)).setOnClickListener(new View.OnClickListener() {
+        (findViewById(R.id.back_to_welcome)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),ProfileActivity.class);
+                Intent intent=new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(intent);
             }
         });

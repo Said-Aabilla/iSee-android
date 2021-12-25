@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import com.example.iSee.Controllers.ILoginController;
 import com.example.iSee.Controllers.ISignupController;
 import com.example.iSee.Controllers.LoginController;
 import com.example.iSee.Controllers.SignupController;
+import com.example.iSee.Models.User;
 import com.example.iSee.R;
 import com.example.iSee.Views.ILoginView;
 import com.example.iSee.Views.ISignupView;
@@ -64,8 +66,16 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
-    public void onLoginSuccess(String message)  {
+    public void onLoginSuccess(String message,User user)  {
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
+        Intent intent=new Intent(this,HomeActivity.class);
+
+        intent.putExtra("fullname",user.getFullname());
+        intent.putExtra("email",user.getEmail());
+        intent.putExtra("vision",user.getVision());
+        intent.putExtra("language",user.getLanguage());
+
+        startActivity(intent);
 
     }
 

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:id="@+id/imageView2"
+                android:id="@+id/back_img_btn"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_marginStart="32dp"
@@ -39,7 +39,8 @@
                 android:layout_marginTop="-20dp"
                 android:layout_marginEnd="-30dp"
                 android:layout_marginRight="-30dp"
-                android:background="@drawable/circle" />
+                android:background="@drawable/circle"
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -70,6 +71,7 @@
                     android:textColor="@color/colorGrayDark"
                     android:textSize="18sp"
                     app:fontFamily="sans-serif-medium" />
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -82,10 +84,11 @@
 
 
                 <TextView
+                    android:id="@+id/vision_false"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="19dp"
                     android:layout_marginTop="32dp"
+                    android:layout_marginBottom="19dp"
                     android:background="@drawable/login_bordershape"
                     android:gravity="center"
                     android:padding="8dp"
@@ -106,6 +109,7 @@
                     app:fontFamily="sans-serif-black" />
 
                 <TextView
+                    android:id="@+id/vision_true"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="19dp"

@@ -19,8 +19,8 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class SignupController implements ISignupController {
-//Parameters & globals variables
-  String BASE_URL="http://10.0.2.2:3000";
+//Parameters & global variables
+  String BASE_URL="https://isee-backend.herokuapp.com";
   Retrofit retrofit = new Retrofit.Builder()
          .baseUrl(BASE_URL)
          .addConverterFactory(GsonConverterFactory.create())
@@ -37,8 +37,8 @@ public class SignupController implements ISignupController {
     }
 
     @Override
-    public void onSignup(String email, String password) {
-        User user=new User(email,password);
+    public void onSignup(String email, String password,String fullname,String langage,boolean vision) {
+        final User user=new User(email,password,fullname,langage,vision);
         int signupcode=user.isValid();
         if (signupcode==0){
             signupView.onSignupFailed("enter the email");
@@ -54,6 +54,9 @@ public class SignupController implements ISignupController {
         else {
             map.put("email", email);
             map.put("password", password);
+            map.put("fullname",fullname);
+            map.put("langage",langage);
+            map.put("vision",String.valueOf(vision));
             Call<Void> call = retrofitInterface.executeSignup(map);
             call.enqueue(new Callback<Void>() {
                 @Override

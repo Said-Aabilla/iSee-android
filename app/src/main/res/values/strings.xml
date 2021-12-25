@@ -15,12 +15,12 @@
     <string name="no_account_string">Don\'t have an account ?\ </string>
     <string name="signup_terms_string">By signing in you agree to our\ </string>
     <string name="terms_of_services">Terms of Service</string>
-    <string name="username_hint">example@example.com</string>
+    <string name="username_hint">example@iSee.com</string>
     <string name="let_s_fill_in">Let\'s fill in\ </string>
     <string name="from_here">From Here</string>
     <string name="oops_it_s_empty">Oops,\ it\'s empty!</string>
     <string name="todo">TODO</string>
-    <string name="createAccount">Create Account!</string>
+    <string name="createAccount">Create Account !</string>
     <string name="firstName">First Name</string>
     <string name="lastName">Last Name</string>
     <string name="alreadyAccountString">Already have an account ?\ </string>
@@ -159,4 +159,9 @@
     <string name="logout">Logout</string>
     <string name="search2">Search</string>
     <string name="what_do_you_want_to_learn">What do you want to learn ?</string>
+    <string-array name="spinner_array">
+        <item>French</item>
+        <item>English</item>
+        <item>Arabic</item>
+    </string-array>
 </resources>
