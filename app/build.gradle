@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.iSee"
-        minSdkVersion 15
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -20,6 +20,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
@@ -36,6 +40,9 @@ dependencies {
     implementation   'com.squareup.retrofit2:converter-gson:2.3.0'
     implementation 'androidx.preference:preference:1.1.1'
     implementation 'com.android.support:multidex:1.0.3'
+    implementation platform('com.google.firebase:firebase-bom:29.0.2')
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation 'com.google.firebase:firebase-database:20.0.3'
 
 
     testImplementation 'junit:junit:4.12'
@@ -44,3 +51,5 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
 }
+
+apply plugin: 'com.google.gms.google-services'

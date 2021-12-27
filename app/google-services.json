@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1062297424217",
+    "project_id": "isee-a6a3d",
+    "storage_bucket": "isee-a6a3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1062297424217:android:c94cb58ed48ba3826cfc48",
+        "android_client_info": {
+          "package_name": "com.example.iSee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1062297424217-uuuss835fifschk0jedianm6fgra535q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaG75hq7LJWjzAhbGptgnnPAfoMgKPwZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1062297424217-uuuss835fifschk0jedianm6fgra535q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
