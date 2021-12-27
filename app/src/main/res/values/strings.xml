@@ -159,6 +159,7 @@
     <string name="logout">Logout</string>
     <string name="search2">Search</string>
     <string name="what_do_you_want_to_learn">What do you want to learn ?</string>
+    <string name="call">Call</string>
     <string-array name="spinner_array">
         <item>French</item>
         <item>English</item>

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.iSee.Activities.ProfileActivity;
 import com.example.iSee.R;
 
 
@@ -19,7 +18,7 @@ public class SuccessActivity extends AppCompatActivity {
         (findViewById(R.id.start)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), HomeActivity.class);
+                Intent intent=new Intent(getApplicationContext(), HomeVolunteerActivity.class);
                 startActivity(intent);
             }
         });

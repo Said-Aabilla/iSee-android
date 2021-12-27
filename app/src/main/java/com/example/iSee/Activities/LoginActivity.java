@@ -1,27 +1,23 @@
 package com.example.iSee.Activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.iSee.Controllers.ILoginController;
-import com.example.iSee.Controllers.ISignupController;
 import com.example.iSee.Controllers.LoginController;
-import com.example.iSee.Controllers.SignupController;
 import com.example.iSee.Models.User;
 import com.example.iSee.R;
 import com.example.iSee.Views.ILoginView;
-import com.example.iSee.Views.ISignupView;
 
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
 
-//Global variables
+    //Global variables
     ILoginController loginController;
 
     @Override
@@ -29,7 +25,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginController=new LoginController(this);
+        loginController = new LoginController(this);
 //initialisation
 
 
@@ -41,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
             public void onClick(View view) {
                /* Intent intent=new Intent(getApplicationContext(), SuccessActivity.class);
                 startActivity(intent);*/
-                loginController.onLogin(emailEdit.getText().toString().trim(),passwordEdit.getText().toString().trim());
+                loginController.onLogin(emailEdit.getText().toString().trim(), passwordEdit.getText().toString().trim());
 
             }
         });
@@ -49,15 +45,15 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         (findViewById(R.id.signup_btn)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), SignupActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
                 startActivity(intent);
             }
         });
         (findViewById(R.id.IconBack)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              Intent intent=new Intent(LoginActivity.this, MainActivity.class);
-              startActivity(intent);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -66,22 +62,29 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
-    public void onLoginSuccess(String message,User user)  {
-        Toast.makeText(this,message,Toast.LENGTH_LONG).show();
-        Intent intent=new Intent(this,HomeActivity.class);
+    public void onLoginSuccess(String message, User user) {
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+        Intent volunteerIntent = new Intent(this, HomeVolunteerActivity.class);
+        Intent visuallyImpairedIntent = new Intent(this, HomeImpairedActivity.class);
 
-        intent.putExtra("fullname",user.getFullname());
-        intent.putExtra("email",user.getEmail());
-        intent.putExtra("vision",user.getVision());
-        intent.putExtra("language",user.getLanguage());
+        visuallyImpairedIntent.putExtra("fullname",user.getFullname());
+        visuallyImpairedIntent.putExtra("email",user.getEmail());
+        visuallyImpairedIntent.putExtra("vision",user.getVision());
+        visuallyImpairedIntent.putExtra("language",user.getLanguage());
+        volunteerIntent.putExtra("fullname",user.getFullname());
+        volunteerIntent.putExtra("email",user.getEmail());
+        volunteerIntent.putExtra("vision",user.getVision());
+        volunteerIntent.putExtra("language",user.getLanguage());
 
-        startActivity(intent);
-
+        if (user.getVision()) {
+            startActivity(volunteerIntent);
+        }else if (!user.getVision()){
+            startActivity(visuallyImpairedIntent);
+        }
     }
 
     @Override
     public void onLoginFailed(String message) {
-        Toast.makeText(this,message,Toast.LENGTH_LONG).show();
-
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
     }
 }
