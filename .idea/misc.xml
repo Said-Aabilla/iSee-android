@@ -17,9 +17,13 @@
         <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/live_stream_item.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/profile.xml" value="0.25" />
         <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/search.xml" value="0.19010416666666666" />
-        <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/settings.xml" value="0.1" />
         <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/layout/terms_of_use.xml" value="0.19010416666666666" />
         <entry key="..\:/Users/HICHAM/AndroidStudioProjects/iSee-android/app/src/main/res/menu/navigation_menu.xml" value="0.19010416666666666" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_home.xml" value="0.22780797101449277" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_volunteer_home.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_welcome.xml" value="0.22282608695652173" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/iSee-android/app/src/main/res/layout/checkvision_activity.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/lenovo/AndroidStudioProjects/iSee-android/app/src/main/res/layout/settings.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee-android/app/src/main/res/drawable/login_bordershape.xml" value="0.22037037037037038" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee-android/app/src/main/res/layout/about_courses.xml" value="0.12771739130434784" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee-android/app/src/main/res/layout/activity_cart.xml" value="0.10182370820668693" />
@@ -56,10 +60,6 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee/iSee-android/app/src/main/res/layout/search.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee/iSee-android/app/src/main/res/layout/terms_of_use.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee/iSee-android/app/src/main/res/xml/network_security_config.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_call_home.xml" value="0.1984375" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.1984375" />
-        <entry key="app/src/main/res/layout/activity_volunteer_home.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/checkvision_activity.xml" value="0.1984375" />
       </map>
     </option>
   </component>

@@ -14,4 +14,5 @@ public interface IRetrofit {
     Call<User> executeLogin(@Body HashMap<String,String>map);
     @POST("/users/signup")
     Call<Void> executeSignup(@Body Map<String,String> map);
+
 }
