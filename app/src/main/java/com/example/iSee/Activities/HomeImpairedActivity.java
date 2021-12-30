@@ -40,6 +40,7 @@ import java.util.UUID;
 
 public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew {
 
+//    UI CALL HELPER VARIABLES
     WebView webView;
     ConstraintLayout initialLayout;
     BottomNavigationView navMenu;
@@ -64,7 +65,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         initialLayout = findViewById(R.id.initialLayout);
         callControlLayout = findViewById(R.id.callControlLayout);
 
-        username= Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
+        username=Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
 
         findViewById(R.id.callBtn).setOnClickListener(v -> {
 
@@ -201,10 +202,9 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
 
     @Override
     public void onBackPressed() {
+        fireBaseRef.child(username).child("incoming").setValue(null);
         navMenu.setVisibility(View.VISIBLE);
         initialLayout.setVisibility(View.VISIBLE);
-        fireBaseRef.child(username).removeValue();
-        finish();
     }
 
     @Override

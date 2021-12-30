@@ -1,12 +1,16 @@
 package com.example.iSee.Activities;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 import com.example.iSee.Controllers.ILoginController;
 import com.example.iSee.Controllers.LoginController;
@@ -16,6 +20,13 @@ import com.example.iSee.Views.ILoginView;
 
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
+
+    String[] PERMISSIONS = {
+            Manifest.permission.CAMERA,
+            Manifest.permission.RECORD_AUDIO,
+    };
+
+    private final int requestCode = 101;
 
     //Global variables
     ILoginController loginController;
@@ -62,6 +73,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        if (!isPermissionGranted(this, PERMISSIONS)) {
+            askForPermission(PERMISSIONS);
+        }
+    }
+
+    @Override
     public void onLoginSuccess(String message, User user) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         Intent volunteerIntent = new Intent(this, HomeVolunteerActivity.class);
@@ -76,6 +95,8 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         volunteerIntent.putExtra("vision",user.getVision());
         volunteerIntent.putExtra("language",user.getLanguage());
 
+
+
         if (user.getVision()) {
             startActivity(volunteerIntent);
         }else if (!user.getVision()){
@@ -86,5 +107,20 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     @Override
     public void onLoginFailed(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+    }
+
+    private boolean isPermissionGranted(Context context, String[] permissions) {
+        if (context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void askForPermission(String[] permissions) {
+        ActivityCompat.requestPermissions(this, permissions, requestCode);
     }
 }

@@ -1,41 +1,5 @@
 package com.example.iSee.Activities;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
-import android.Manifest;
-import android.content.IntentSender;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.os.Bundle;
-import android.os.Looper;
-import android.util.Log;
-import android.widget.TextView;
-
-import com.google.android.gms.common.api.ResolvableApiException;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationSettingsRequest;
-import com.google.android.gms.location.LocationSettingsResponse;
-import com.google.android.gms.location.SettingsClient;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.IntentSender;
@@ -55,12 +19,26 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.example.iSee.R;
 import com.example.iSee.Views.ICallVIew;
 import com.example.iSee.Views.WebJavascriptInterface;
 import com.google.android.gms.common.api.ResolvableApiException;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.LocationSettingsRequest;
+import com.google.android.gms.location.LocationSettingsResponse;
+import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -71,17 +49,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIew {
+
+    //    LOCALISATION HELPER VARIABLES
     private static final String TAG = "HomeVolunteerActivity";
     int LOCATION_REQUEST_CODE = 10001;
-
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationRequest locationRequest;
 
+    //    UI CALL HELPER VARIABLES
     WebView webView;
     ConstraintLayout initialLayout;
     BottomNavigationView navMenu;
@@ -97,16 +75,18 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
     boolean isAudio = true;
     boolean isVideo = true;
     boolean isPeerConnected = true;
+    //    FireBase instance
     DatabaseReference fireBaseRef = FirebaseDatabase.getInstance().getReference("users");
 
 
+    //    CallBack To Update the location
     LocationCallback locationCallback = new LocationCallback() {
         @Override
         public void onLocationResult(LocationResult locationResult) {
             if (locationResult == null) {
                 return;
             }
-            for(Location location: locationResult.getLocations()) {
+            for (Location location : locationResult.getLocations()) {
 
                 Log.d(TAG, location.toString());
             }
@@ -137,9 +117,9 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         navMenu = findViewById(R.id.Bottom_menu);
         initialLayout = findViewById(R.id.initialLayout);
 
-        TextView usernameText=findViewById(R.id.user_name);
-        usernameText.setText("Hi "+getIntent().getStringExtra("fullname")+" !");
-        username= Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
+        TextView usernameText = findViewById(R.id.user_name);
+        usernameText.setText("Hi " + getIntent().getStringExtra("fullname") + " !");
+        username = "nabil";  //Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
 
         findViewById(R.id.toggleAudioBtn).setOnClickListener(v -> {
             isAudio = !isAudio;
@@ -187,86 +167,7 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         stopLocationUpdates();
     }
 
-    private void checkSettingsAndStartLocationUpdates() {
-        LocationSettingsRequest request = new LocationSettingsRequest.Builder()
-                .addLocationRequest(locationRequest).build();
-        SettingsClient client = LocationServices.getSettingsClient(this);
 
-        Task<LocationSettingsResponse> locationSettingsResponseTask = client.checkLocationSettings(request);
-        locationSettingsResponseTask.addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
-            @Override
-            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
-                startLocationUpdates();
-            }
-        });
-        locationSettingsResponseTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                if (e instanceof ResolvableApiException) {
-                    ResolvableApiException apiException = (ResolvableApiException) e;
-                    try {
-                        apiException.startResolutionForResult(HomeVolunteerActivity.this, 1001);
-                    } catch (IntentSender.SendIntentException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            }
-        });
-    }
-
-
-
-    @SuppressLint("MissingPermission")
-    private void startLocationUpdates() {
-        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
-    }
-
-    private void stopLocationUpdates() {
-        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
-    }
-
-    private void getLastLocation() {
-        @SuppressLint("MissingPermission")
-        Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
-        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    Log.d(TAG, "" + location.toString());
-                    Log.d(TAG, "" + location.getLatitude());
-                    Log.d(TAG, "" + location.getLongitude());
-                } else  {
-                }
-            }
-        });
-        locationTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.e(TAG, "onFailure: " + e.getLocalizedMessage() );
-            }
-        });
-    }
-
-    private void askLocationPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
-                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
-            } else {
-                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
-            }
-        }
-    }
-
-    @SuppressLint("MissingSuperCall")
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == LOCATION_REQUEST_CODE) {
-            if (grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                checkSettingsAndStartLocationUpdates();
-            } else {
-            }
-        }
-    }
     @SuppressLint("SetJavaScriptEnabled")
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     private void setUpWebview() {
@@ -286,7 +187,7 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
 
     private void loadVideoCall() {
         webView.loadUrl("file:android_asset/call.html");
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 initializePeer();
@@ -348,10 +249,90 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         isPeerConnected = true;
     }
 
+//    Location Helper Function
+    private void checkSettingsAndStartLocationUpdates() {
+        LocationSettingsRequest request = new LocationSettingsRequest.Builder()
+                .addLocationRequest(locationRequest).build();
+        SettingsClient client = LocationServices.getSettingsClient(this);
+
+        Task<LocationSettingsResponse> locationSettingsResponseTask = client.checkLocationSettings(request);
+        locationSettingsResponseTask.addOnSuccessListener(new OnSuccessListener<LocationSettingsResponse>() {
+            @Override
+            public void onSuccess(LocationSettingsResponse locationSettingsResponse) {
+                startLocationUpdates();
+            }
+        });
+        locationSettingsResponseTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                if (e instanceof ResolvableApiException) {
+                    ResolvableApiException apiException = (ResolvableApiException) e;
+                    try {
+                        apiException.startResolutionForResult(HomeVolunteerActivity.this, 1001);
+                    } catch (IntentSender.SendIntentException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+        });
+    }
+
+    @SuppressLint("MissingPermission")
+    private void startLocationUpdates() {
+        fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+    }
+
+    private void stopLocationUpdates() {
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+    }
+
+    private void getLastLocation() {
+        @SuppressLint("MissingPermission")
+        Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
+        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    Log.d(TAG, "" + location.toString());
+                    Log.d(TAG, "" + location.getLatitude());
+                    Log.d(TAG, "" + location.getLongitude());
+                } else {
+                }
+            }
+        });
+        locationTask.addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "onFailure: " + e.getLocalizedMessage());
+            }
+        });
+    }
+
+    private void askLocationPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+            } else {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+            }
+        }
+    }
+
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == LOCATION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                checkSettingsAndStartLocationUpdates();
+            } else {
+            }
+        }
+    }
+
+
     @Override
     public void onBackPressed() {
-        fireBaseRef.child(username).removeValue();
-        finish();
+        fireBaseRef.child(username).child("incoming").setValue(null);
     }
 
     @Override

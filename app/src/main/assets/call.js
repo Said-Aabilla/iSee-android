@@ -32,7 +32,7 @@ function listen() {
 
         navigator.getUserMedia({
             audio: true, 
-            video: true
+            video: false
         }, (stream) => {
             localVideo.srcObject = stream
             localStream = stream
@@ -52,10 +52,16 @@ function listen() {
 }
 
 function startCall(otherUserId) {
-    navigator.getUserMedia({
-        audio: true,
-        video: true
-    }, (stream) => {
+        const constraints = {
+              advanced: [{
+                  facingMode: "environment"
+              }]
+        };
+        navigator.getUserMedia({
+            audio: true,
+            video: constraints
+
+        }, (stream) => {
 
         localVideo.srcObject = stream
         localStream = stream
