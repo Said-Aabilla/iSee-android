@@ -21,6 +21,8 @@ import com.example.iSee.Views.ILoginView;
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
 
+    //global variables
+
     String[] PERMISSIONS = {
             Manifest.permission.CAMERA,
             Manifest.permission.RECORD_AUDIO,
@@ -48,6 +50,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
             public void onClick(View view) {
                /* Intent intent=new Intent(getApplicationContext(), SuccessActivity.class);
                 startActivity(intent);*/
+
                 loginController.onLogin(emailEdit.getText().toString().trim(), passwordEdit.getText().toString().trim());
 
             }

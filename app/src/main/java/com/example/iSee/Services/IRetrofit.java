@@ -9,10 +9,14 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface IRetrofit {
+    //public static String userId = null;
 
     @POST("/users/signin")
     Call<User> executeLogin(@Body HashMap<String,String>map);
     @POST("/users/signup")
     Call<Void> executeSignup(@Body Map<String,String> map);
+    @POST("/users/update")
+    Call<Void> executeUpdate(@Body Map<String,String> map);
+
 
 }

@@ -6,6 +6,8 @@ public interface IUser {
     String getFullname();
     boolean getVision();
     String getLanguage();
+    double getLatitude();
+    double getLongitude();
     int isValid();
 
 

@@ -84,8 +84,8 @@
 
         <ImageView
             android:id="@+id/imaglog"
-            android:layout_width="191dp"
-            android:layout_height="123dp"
+            android:layout_width="222dp"
+            android:layout_height="131dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.481"
@@ -97,8 +97,8 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="246dp"
-            android:layout_height="174dp"
+            android:layout_width="227dp"
+            android:layout_height="137dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
@@ -134,7 +134,7 @@
         </androidx.cardview.widget.CardView>
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/Tuto_app"
             android:layout_width="197dp"
             android:layout_height="48dp"
             android:background="#FF9800"

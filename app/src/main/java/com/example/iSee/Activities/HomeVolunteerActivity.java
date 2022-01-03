@@ -7,6 +7,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
@@ -19,14 +20,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-
+import com.example.iSee.Controllers.IUpdateLocController;
+import com.example.iSee.Controllers.UpdateLocController;
 import com.example.iSee.R;
 import com.example.iSee.Views.ICallVIew;
 import com.example.iSee.Views.WebJavascriptInterface;
@@ -52,13 +54,14 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.UUID;
 
 public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIew {
+    IUpdateLocController updateLocController;
 
     //    LOCALISATION HELPER VARIABLES
     private static final String TAG = "HomeVolunteerActivity";
     int LOCATION_REQUEST_CODE = 10001;
     FusedLocationProviderClient fusedLocationProviderClient;
     LocationRequest locationRequest;
-
+    double Latitude=0.0,Longitude=0.0;
     //    UI CALL HELPER VARIABLES
     WebView webView;
     ConstraintLayout initialLayout;
@@ -80,28 +83,28 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
 
 
     //    CallBack To Update the location
-    LocationCallback locationCallback = new LocationCallback() {
-        @Override
-        public void onLocationResult(LocationResult locationResult) {
-            if (locationResult == null) {
-                return;
-            }
-            for (Location location : locationResult.getLocations()) {
+        LocationCallback locationCallback = new LocationCallback() {
+            @Override
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) {
+                    return;
+                }
+                for (Location location : locationResult.getLocations()) {
+                    Latitude = location.getLatitude();
+                    Longitude = location.getLongitude();
 
-                Log.d(TAG, location.toString());
+                }
             }
-        }
-    };
-
+        };
+   //********************************************************************** OnCreate ***************************************************************************
     @SuppressLint("SetTextI18n")
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_home);
-
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
         locationRequest = LocationRequest.create();
         locationRequest.setInterval(5000);
         locationRequest.setFastestInterval(2000);
@@ -116,11 +119,25 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         rejectBtn = findViewById(R.id.rejectBtn);
         navMenu = findViewById(R.id.Bottom_menu);
         initialLayout = findViewById(R.id.initialLayout);
-
+        //Get User fullname & email
         TextView usernameText = findViewById(R.id.user_name);
         usernameText.setText("Hi " + getIntent().getStringExtra("fullname") + " !");
-        username = "nabil";  //Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
+        String email=getIntent().getStringExtra("email");
+        updateLocController=new UpdateLocController(this);
+// update user location every 10 s
+        final Handler handler = new Handler();
+        final int delay =10000;
 
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                updateLocController.onUpdateLocalisation(email,Latitude,Longitude);
+                Toast.makeText(HomeVolunteerActivity.this, "Localion updated !", Toast.LENGTH_SHORT).show();
+                handler.postDelayed(this, delay);
+            }
+        }, delay);
+ //_________________________________________________________________
+
+        username = "nabil";  //Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
         findViewById(R.id.toggleAudioBtn).setOnClickListener(v -> {
             isAudio = !isAudio;
             webView.post(new Runnable() {
@@ -150,12 +167,13 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
 
         setUpWebview();
     }
-
+//*************************************************************** Oncreate End ************************************************************************
     @Override
     protected void onStart() {
         super.onStart();
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             checkSettingsAndStartLocationUpdates();
+
         } else {
             askLocationPermission();
         }
@@ -280,6 +298,9 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
     @SuppressLint("MissingPermission")
     private void startLocationUpdates() {
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+
+
+
     }
 
     private void stopLocationUpdates() {

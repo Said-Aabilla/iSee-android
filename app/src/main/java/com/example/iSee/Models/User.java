@@ -8,6 +8,7 @@ public class User implements IUser{
    private String fullname, email,password;
    private String langage;
    private boolean vision;
+   private double latitude,longitude;
 
    public User(String email,String password) {
         this.email=email;
@@ -22,7 +23,14 @@ public class User implements IUser{
        this.vision=vision;
     }
 
-      @Override
+    public User(String email, double latitude, double longitude) {
+       this.email=email;
+       this.latitude=latitude;
+       this.longitude=longitude;
+    }
+
+
+    @Override
       public String getFullname() {
           return fullname;
       }
@@ -43,6 +51,12 @@ public class User implements IUser{
     public String getPassword() {
         return password;
     }
+    @Override
+    public double getLatitude() {
+        return latitude;
+    }
+    @Override
+    public double getLongitude() {return longitude; }
 
     @Override
     public int isValid() {
