@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.POST;
 
 public interface IRetrofit {
@@ -18,6 +19,8 @@ public interface IRetrofit {
     Call<Void> executeSignup(@Body Map<String,String> map);
     @POST("/users/update")
     Call<Void> executeUpdate(@Body Map<String,String> map);
-
-
+    @DELETE("/users/delete")
+    Call<Void> executeDelete(@Body Map<String,String> email);
 }
+
+
