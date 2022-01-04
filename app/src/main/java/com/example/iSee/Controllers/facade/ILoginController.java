@@ -1,4 +1,4 @@
-package com.example.iSee.Controllers;
+package com.example.iSee.Controllers.facade;
 
 public interface ILoginController {
 

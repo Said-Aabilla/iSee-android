@@ -15,8 +15,8 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
-import com.example.iSee.Controllers.ILoginController;
-import com.example.iSee.Controllers.LoginController;
+import com.example.iSee.Controllers.facade.ILoginController;
+import com.example.iSee.Controllers.impl.LoginController;
 import com.example.iSee.Models.User;
 import com.example.iSee.R;
 import com.example.iSee.Services.SessionManager;

@@ -5,34 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.iSee.Controllers.ISignupController;
-import com.example.iSee.Controllers.SignupController;
+import com.example.iSee.Controllers.facade.ISignupController;
+import com.example.iSee.Controllers.impl.SignupController;
 import com.example.iSee.R;
-import com.example.iSee.Services.IRetrofit;
 import com.example.iSee.Views.ISignupView;
-
-import java.security.cert.CertificateException;
-import java.util.HashMap;
-import java.util.Map;
-
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.SSLSocketFactory;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
-
-import okhttp3.OkHttpClient;
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 
 public class SignupActivity extends AppCompatActivity implements ISignupView {
@@ -100,9 +80,4 @@ public class SignupActivity extends AppCompatActivity implements ISignupView {
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
 
     }
-
-    //uses functions...
-
-
-
 }
