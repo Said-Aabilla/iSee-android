@@ -11,6 +11,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.webkit.PermissionRequest;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -119,6 +121,9 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         rejectBtn = findViewById(R.id.rejectBtn);
         navMenu = findViewById(R.id.Bottom_menu);
         initialLayout = findViewById(R.id.initialLayout);
+//Animation
+        Animation animation= AnimationUtils.loadAnimation(HomeVolunteerActivity.this,R.anim.rotate);
+        (findViewById(R.id.imageView)).startAnimation(animation);
         //Get User fullname & email
         TextView usernameText = findViewById(R.id.user_name);
         usernameText.setText("Hi " + getIntent().getStringExtra("fullname") + " !");

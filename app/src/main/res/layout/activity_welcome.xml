@@ -47,6 +47,7 @@
                 />
 
             <ImageView
+                android:id="@+id/eye"
                 android:layout_width="288dp"
                 android:layout_height="148dp"
                 android:background="@drawable/isee"

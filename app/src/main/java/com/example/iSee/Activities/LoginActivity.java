@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -16,7 +19,10 @@ import com.example.iSee.Controllers.ILoginController;
 import com.example.iSee.Controllers.LoginController;
 import com.example.iSee.Models.User;
 import com.example.iSee.R;
+import com.example.iSee.Services.SessionManager;
 import com.example.iSee.Views.ILoginView;
+
+import java.util.HashMap;
 
 
 public class LoginActivity extends AppCompatActivity implements ILoginView {
@@ -38,20 +44,32 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         loginController = new LoginController(this);
 //initialisation
-
-
+        final CheckBox rememberme=findViewById(R.id.remember_me);
         final EditText emailEdit = findViewById(R.id.user_email);
         final EditText passwordEdit = findViewById(R.id.user_password);
+
+// Get rememnered values
+        SessionManager sessionManager=new SessionManager(this,SessionManager.Rememberme_session);
+        if (sessionManager.CheckRememberME()){
+            HashMap<String,String > rememberMeDetail=sessionManager.getRemembermeDetailsFromSession();
+            emailEdit.setText(rememberMeDetail.get(SessionManager.KEY_EMAILREMEMBERME));
+            passwordEdit.setText(rememberMeDetail.get(SessionManager.KEY_PASSWORDREMEMBERME));
+        }
 
         (findViewById(R.id.login_btn)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               /* Intent intent=new Intent(getApplicationContext(), SuccessActivity.class);
-                startActivity(intent);*/
-
                 loginController.onLogin(emailEdit.getText().toString().trim(), passwordEdit.getText().toString().trim());
+                Animation animation= AnimationUtils.loadAnimation(LoginActivity.this,R.anim.sample_anim);
+                (findViewById(R.id.login_btn)).startAnimation(animation);
+
+                if(rememberme.isChecked()){
+                    SessionManager sessionManager=new SessionManager(LoginActivity.this,SessionManager.Rememberme_session);
+                    sessionManager.createRememberMeSession(emailEdit.getText().toString().trim(),passwordEdit.getText().toString().trim());
+                }
 
             }
         });
@@ -59,7 +77,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
         (findViewById(R.id.signup_btn)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), SignupActivity.class);
+                Intent intent = new Intent(getApplicationContext(), CheckvisionActivity.class);
                 startActivity(intent);
             }
         });
@@ -71,6 +89,7 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
 
             }
         });
+
 
 
     }
@@ -126,4 +145,6 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
     private void askForPermission(String[] permissions) {
         ActivityCompat.requestPermissions(this, permissions, requestCode);
     }
+
+
 }
