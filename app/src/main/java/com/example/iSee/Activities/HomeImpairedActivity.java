@@ -28,8 +28,13 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 
+import com.example.iSee.Controllers.facade.ICloseUsersController;
+import com.example.iSee.Controllers.facade.ILoginController;
+import com.example.iSee.Controllers.impl.CloseUsersController;
+import com.example.iSee.Models.User;
 import com.example.iSee.R;
 import com.example.iSee.Views.ICallVIew;
+import com.example.iSee.Views.IHomeImpairedView;
 import com.example.iSee.Views.WebJavascriptInterface;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -49,11 +54,13 @@ import java.util.Objects;
 import java.util.UUID;
 
 
-public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew {
+public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew, IHomeImpairedView {
 
 
-    private static final String TAG = "MainActivity";
+    private static final String TAG = "HomeImpairedActivity";
     int LOCATION_REQUEST_CODE = 10001;
+    int LOCATION_BASED_CALL = 1;
+    int LANGUAGE_BASED_CALL = 2;
 
     FusedLocationProviderClient fusedLocationProviderClient;
 
@@ -69,7 +76,8 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
     String connId = "";
     boolean isPeerConnected = true;
     boolean isUserAvailable = false;
-    List<String> availableUsers;
+    ICloseUsersController closeUsersController;
+    List<User> availableUsers= new ArrayList<>();;
 
     DatabaseReference fireBaseRef = FirebaseDatabase.getInstance().getReference("users");
 
@@ -79,9 +87,12 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call_home);
 
-
-
+        //localisation
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        //get close users
+        closeUsersController = new CloseUsersController(this);
+
 
 
         webView = findViewById(R.id.webview);
@@ -91,67 +102,68 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
 
         username=Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
 
-        findViewById(R.id.callBtn).setOnClickListener(v -> {
-
-            availableUsers = new ArrayList<>();
-            availableUsers.add("ismail");
-            availableUsers.add("hajar");
-            availableUsers.add("nabil");
-            availableUsers.add("reda");
-
-            for (int i = 0; i<= availableUsers.size(); i++){
-                if (isUserAvailable) break;
-                try {
-                    fireBaseRef.child(availableUsers.get(i-1)).child("incoming").setValue(null);
-                }catch (Exception e){
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-                Toast.makeText(getApplicationContext(), "testing " + i, Toast.LENGTH_SHORT).show();
-                try {
-                    sendCallRequest(availableUsers.get(i));
-                }catch (Exception e){
-                    Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            }
+        findViewById(R.id.locationCallBtn).setOnClickListener(v -> {
+            getCloseUsers(LOCATION_BASED_CALL);
+           tryOutCalls();
+        });
+        findViewById(R.id.normalcallBtn).setOnClickListener(v -> {
+            getCloseUsers(LANGUAGE_BASED_CALL);
+            tryOutCalls();
         });
 
         setUpWebview();
 
     }
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
+    private void getCloseUsers(int callType) {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            getLastLocation();
+            @SuppressLint("MissingPermission")
+            Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
+            locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
+                @Override
+                public void onSuccess(Location location) {
+                    if (location != null && callType==LOCATION_BASED_CALL) {
+                        closeUsersController.onGetCloseUsers(location.getLatitude(),location.getLongitude());
+                    } else if(callType==LANGUAGE_BASED_CALL)  {
+                       // closeUsersController.onGetCloseUsers(location.getLatitude(),location.getLongitude());
+                    }
+                }
+            });
+            locationTask.addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.e(TAG, e.getLocalizedMessage() );
+                }
+            });
         } else {
             askLocationPermission();
         }
     }
 
-
-    private void getLastLocation() {
-        @SuppressLint("MissingPermission")
-        Task<Location> locationTask = fusedLocationProviderClient.getLastLocation();
-        locationTask.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    Log.d(TAG, "     " + location.toString());
-                    Log.d(TAG, "     " + location.getLatitude());
-                    Log.d(TAG, "     " + location.getLongitude());
-                } else  {
-                }
+    private void tryOutCalls() {
+        for (int i = 0; i<= availableUsers.size(); i++){
+            if (isUserAvailable) break;
+            try {
+                fireBaseRef.child(availableUsers.get(i-1).getFullname().trim()).child("incoming").setValue(null);
+            }catch (Exception e){
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
-        locationTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Log.e(TAG, e.getLocalizedMessage() );
+            Toast.makeText(getApplicationContext(), "testing " + i, Toast.LENGTH_SHORT).show();
+            try {
+                sendCallRequest(availableUsers.get(i).getFullname().trim());
+            }catch (Exception e){
+                Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
-        });
+        }
     }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
 
     private void askLocationPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -164,16 +176,6 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         }
     }
 
-    @SuppressLint("MissingSuperCall")
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == LOCATION_REQUEST_CODE) {
-            if (grantResults.length >0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getLastLocation();
-            } else {
-            }
-        }
-    }
 
     @SuppressLint("SetJavaScriptEnabled")
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
@@ -292,5 +294,11 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         fireBaseRef.child(username).setValue(null);
         webView.loadUrl("about:blank");
         super.onDestroy();
+    }
+
+    @Override
+    public void onGetCloseUsers(List<User> users) {
+        Log.e(TAG,users.toString());
+        availableUsers = users;
     }
 }

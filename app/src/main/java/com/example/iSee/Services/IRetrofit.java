@@ -21,6 +21,8 @@ public interface IRetrofit {
     Call<Void> executeUpdate(@Body Map<String,String> map);
     @DELETE("/users/delete")
     Call<Void> executeDelete(@Body Map<String,String> email);
+    @POST("/users/close")
+    Call<List<User>> getCloseUsers(@Body HashMap<String, Double> map);
 }
 
 

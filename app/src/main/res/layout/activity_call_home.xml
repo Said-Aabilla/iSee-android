@@ -38,37 +38,43 @@
             android:id="@+id/toggleAudioBtn"/>
 
     </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
 
+        android:id="@+id/initialLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FBFAFA"
-        android:id="@+id/initialLayout">
+        android:background="#FBFAFA">
 
-
-        <ImageView
-            android:id="@+id/imaglog"
-            android:layout_width="189dp"
-            android:layout_height="146dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.481"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.031"
-            app:srcCompat="@drawable/isee"
-            tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/callBtn"
-            android:layout_width="327dp"
-            android:layout_height="376dp"
-            android:layout_marginBottom="104dp"
+            android:id="@+id/locationCallBtn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="29dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="35dp"
             android:background="#FF9800"
-            android:text="@string/call"
+            android:text="@string/location_call"
+            android:textSize="25sp"
+            app:layout_constraintBottom_toTopOf="@+id/normalcallBtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/normalcallBtn"
+            android:layout_width="378dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="105dp"
+            android:background="#FF9800"
+            android:text="@string/normal_call"
+            android:textSize="25sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/locationCallBtn" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

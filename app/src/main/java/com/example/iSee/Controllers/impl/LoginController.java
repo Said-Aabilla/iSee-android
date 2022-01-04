@@ -55,9 +55,9 @@ public class LoginController implements ILoginController {
 
                     if (response.code() == 200) {
                         User result = response.body();
-                        loginView.onLoginSuccess("Login Success !",result);
+                        loginView.onLoginSuccess("Login Success !", result);
 
-                        }
+                    }
                      else if (response.code() == 409) {
                         loginView.onLoginFailed(" User not found ! Try Signup !!");
                     }

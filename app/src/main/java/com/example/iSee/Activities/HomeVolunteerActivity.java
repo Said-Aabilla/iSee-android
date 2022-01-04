@@ -53,6 +53,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIew {
@@ -142,7 +143,7 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         }, delay);
  //_________________________________________________________________
 
-        username = "nabil";  //Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
+        username = Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
         findViewById(R.id.toggleAudioBtn).setOnClickListener(v -> {
             isAudio = !isAudio;
             webView.post(new Runnable() {
