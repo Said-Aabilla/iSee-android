@@ -73,7 +73,6 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
     LinearLayout callControlLayout;
     TextView incomingCallText;
     ImageView toggleAudioBtn;
-    ImageView toggleVideoBtn;
     ImageView acceptBtn;
     ImageView rejectBtn;
     String username = "";
@@ -117,7 +116,6 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         callLayout = findViewById(R.id.callLayout);
         incomingCallText = findViewById(R.id.incomingCallText);
         toggleAudioBtn = findViewById(R.id.toggleAudioBtn);
-        toggleVideoBtn = findViewById(R.id.toggleVideoBtn);
         acceptBtn = findViewById(R.id.acceptBtn);
         rejectBtn = findViewById(R.id.rejectBtn);
         navMenu = findViewById(R.id.Bottom_menu);
@@ -137,7 +135,7 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         handler.postDelayed(new Runnable() {
             public void run() {
                 updateLocController.onUpdateLocalisation(email,Latitude,Longitude);
-                Toast.makeText(HomeVolunteerActivity.this, "Localion updated !", Toast.LENGTH_SHORT).show();
+                Toast.makeText(HomeVolunteerActivity.this, "Localisation updated !", Toast.LENGTH_SHORT).show();
                 handler.postDelayed(this, delay);
             }
         }, delay);
@@ -156,19 +154,6 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
             });
             if (isAudio) toggleAudioBtn.setImageResource(R.drawable.ic_baseline_mic_24);
             else toggleAudioBtn.setImageResource(R.drawable.ic_baseline_mic_off_24);
-        });
-        findViewById(R.id.toggleVideoBtn).setOnClickListener(v -> {
-            isVideo = !isVideo;
-            webView.post(new Runnable() {
-                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                @Override
-                public void run() {
-                    String toggleVidFunc = "javascript:toggleVideo" + "(" + "\"" + isVideo + "\"" + ")";
-                    webView.evaluateJavascript(toggleVidFunc, null);
-                }
-            });
-            if (isVideo) toggleVideoBtn.setImageResource(R.drawable.ic_baseline_videocam_24);
-            else toggleVideoBtn.setImageResource(R.drawable.ic_baseline_videocam_off_24);
         });
 
         setUpWebview();

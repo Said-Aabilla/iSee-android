@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.webkit.PermissionRequest;
@@ -14,11 +15,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -29,9 +27,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
-
 import com.example.iSee.Controllers.facade.ICloseUsersController;
-import com.example.iSee.Controllers.facade.ILoginController;
 import com.example.iSee.Controllers.impl.CloseUsersController;
 import com.example.iSee.Models.User;
 import com.example.iSee.R;
@@ -44,10 +40,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -65,24 +61,21 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
     FusedLocationProviderClient fusedLocationProviderClient;
 
 
-
-
-//    UI CALL HELPER VARIABLES
+    //    UI CALL HELPER VARIABLES
     ProgressBar progressBar;
     Button locationCallBtn;
     Button normalCallBtn;
     WebView webView;
     ConstraintLayout initialLayout;
     BottomNavigationView navMenu;
-    LinearLayout callControlLayout;
     String username = "";
-    List<String> languages= new ArrayList<>();
-
+    List<String> languages = new ArrayList<>();
+    public static Handler handler = new Handler();
     String connId = "";
     boolean isPeerConnected = true;
     boolean isUserAvailable = false;
     ICloseUsersController closeUsersController;
-    List<User> availableUsers= new ArrayList<>();
+    List<User> availableUsers = new ArrayList<>();
 
     DatabaseReference fireBaseRef = FirebaseDatabase.getInstance().getReference("users");
 
@@ -99,28 +92,37 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         closeUsersController = new CloseUsersController(this);
 
 
-
         webView = findViewById(R.id.webview);
         navMenu = findViewById(R.id.Bottom_menu);
         initialLayout = findViewById(R.id.initialLayout);
-        callControlLayout = findViewById(R.id.callControlLayout);
         progressBar = findViewById(R.id.progressBar);
-        normalCallBtn =  findViewById(R.id.normalcallBtn);
-        locationCallBtn =  findViewById(R.id.locationCallBtn);
+        normalCallBtn = findViewById(R.id.normalcallBtn);
+        locationCallBtn = findViewById(R.id.locationCallBtn);
 
-        username=Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
+        username = Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
         languages.add(Objects.requireNonNull(getIntent().getStringExtra("language")).trim());
 
         locationCallBtn.setOnClickListener(v -> {
-           //showProgressBar();
-           getLocationCloseUsers();
-           tryOutCalls();
-          // hideProgressBar();
+            //showProgressBar();
+            getLocationCloseUsers();
+            final Runnable r = new Runnable() {
+                public void run() {
+                    tryOutCalls();
+                }
+            };
+            handler.postDelayed(r, 2000);
+            // hideProgressBar();
         });
         normalCallBtn.setOnClickListener(v -> {
             //showProgressBar();
             closeUsersController.onGetCloseUsersByLang(languages);
-            tryOutCalls();
+            final Runnable r = new Runnable() {
+                public void run() {
+                    tryOutCalls();
+                }
+            };
+            handler.postDelayed(r, 2000);
+
             //hideProgressBar();
         });
 
@@ -133,6 +135,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         locationCallBtn.setVisibility(View.GONE);
         normalCallBtn.setVisibility(View.GONE);
     }
+
     private void hideProgressBar() {
         progressBar.setVisibility(View.GONE);
         locationCallBtn.setVisibility(View.VISIBLE);
@@ -147,14 +150,14 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
                 @Override
                 public void onSuccess(Location location) {
                     if (location != null) {
-                        closeUsersController.onGetCloseUsers(location.getLatitude(),location.getLongitude());
+                        closeUsersController.onGetCloseUsers(location.getLatitude(), location.getLongitude());
                     }
                 }
             });
             locationTask.addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.e(TAG, e.getLocalizedMessage() );
+                    Log.e(TAG, e.getLocalizedMessage());
                 }
             });
         } else {
@@ -164,22 +167,22 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
 
     @SuppressLint("LongLogTag")
     private void tryOutCalls() {
-        Log.e(TAG, "hani anbda les appels" );
-        for (int i = 0; i<= availableUsers.size(); i++){
+        Log.e(TAG, "hani anbda les appels");
+        for (int i = 0; i <= availableUsers.size(); i++) {
             if (isUserAvailable) {
                 //progressBar.setVisibility(View.GONE);
                 break;
             }
             try {
-                fireBaseRef.child(availableUsers.get(i-1).getFullname().trim()).child("incoming").setValue(null);
-            }catch (Exception e){
+                fireBaseRef.child(availableUsers.get(i - 1).getFullname().trim()).child("incoming").setValue(null);
+            } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
             Toast.makeText(getApplicationContext(), "testing " + i, Toast.LENGTH_SHORT).show();
             try {
-                Log.e("SENDING CAAAAAAAAAAAAAAAAAL",availableUsers.get(i).getEmail());
+                Log.e("SENDING CAAAAAAAAAAAAAAAAAL", availableUsers.get(i).getEmail());
                 sendCallRequest(availableUsers.get(i).getFullname().trim());
-            }catch (Exception e){
+            } catch (Exception e) {
                 Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         }
@@ -197,9 +200,9 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)) {
                 Log.d(TAG, "askLocationPermission: you should show an alert dialog...");
-                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
             } else {
-                ActivityCompat.requestPermissions(this, new String[] {Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_REQUEST_CODE);
             }
         }
     }
@@ -224,7 +227,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
 
     private void loadVideoCall() {
         webView.loadUrl("file:android_asset/call.html");
-        webView.setWebViewClient(new WebViewClient(){
+        webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 initializePeer();
@@ -257,18 +260,19 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         fireBaseRef.child(friendUsername).child("isAvailable").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Boolean result =  snapshot.getValue(Boolean.class);
-                if (result!=null && result) {
+                Boolean result = snapshot.getValue(Boolean.class);
+                if (result != null && result) {
                     isUserAvailable = true;
                     Toast.makeText(getApplicationContext(), "Call Accepted", Toast.LENGTH_SHORT).show();
                     listenForConnId(friendUsername);
-                }else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Call ended", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
         });
     }
 
@@ -277,7 +281,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Toast.makeText(getApplicationContext(), "I'm here!", Toast.LENGTH_SHORT).show();
-                if ((String) snapshot.getValue() == null){
+                if ((String) snapshot.getValue() == null) {
                     return;
                 }
 
@@ -289,7 +293,6 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
                         //SWitch controls
                         navMenu.setVisibility(View.GONE);
                         initialLayout.setVisibility(View.GONE);
-                        callControlLayout.setVisibility(View.VISIBLE);
 
                         String call = "javascript:startCall" + "(" + "\"" + (String) snapshot.getValue() + "\"" + ")";
                         webView.evaluateJavascript(call, null);
@@ -327,7 +330,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
     @Override
     public void onGetCloseUsers(List<User> users) {
         availableUsers.clear();
-        Log.e(TAG, "hahuma jaw hna :"+users.toString());
+        Log.e(TAG, "hahuma jaw hna :" + users.toString());
         availableUsers = users;
     }
 }
