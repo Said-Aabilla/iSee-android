@@ -47,7 +47,30 @@ public class CloseUsersController implements ICloseUsersController {
             public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
                 if (response.code() == 200) {
                     List<User> result =response.body();
-                    Log.e("TAAAAAAAAAAAAAAAAAG", String.valueOf(response.body()));
+                    homeImpairedView.onGetCloseUsers(result);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<User>> call, Throwable t) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onGetCloseUsersByLang(List<String> languages) {
+        HashMap<String, List<String>> map = new HashMap<>();
+        map.put("languages", languages);
+
+        Call<List<User>> call = retrofitInterface.getCloseUsersByLanguage(map);
+
+        call.enqueue(new Callback<List<User>>() {
+            @Override
+            public void onResponse(@NonNull Call<List<User>> call, @NonNull Response<List<User>> response) {
+                if (response.code() == 200) {
+                    List<User> result =response.body();
                     homeImpairedView.onGetCloseUsers(result);
                 }
 

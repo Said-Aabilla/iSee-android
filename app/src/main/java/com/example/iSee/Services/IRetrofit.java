@@ -23,6 +23,8 @@ public interface IRetrofit {
     Call<Void> executeDelete(@Body Map<String,String> email);
     @POST("/users/close")
     Call<List<User>> getCloseUsers(@Body HashMap<String, Double> map);
+    @POST("/users/close/language")
+    Call<List<User>> getCloseUsersByLanguage(@Body HashMap<String, List<String>> map);
 }
 
 
