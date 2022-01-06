@@ -36,6 +36,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         settingsItem.setOnClickListener(view -> {
             Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            settingsIntent.putExtra("fullname",getIntent().getStringExtra("fullname"));
             startActivity(settingsIntent);
         });
         dashboardItem.setOnClickListener(view -> {
