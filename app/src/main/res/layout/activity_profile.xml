@@ -22,68 +22,52 @@
             android:id="@+id/account_security"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="39dp"
             android:layout_marginStart="22dp"
             android:layout_marginLeft="22dp"
+            android:layout_marginBottom="39dp"
+            android:gravity="center_horizontal"
             android:text="Volunteer"
             android:textAlignment="center"
-            android:textSize="22sp"
-            android:gravity="center_horizontal" />
+            android:textSize="22sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="39dp"
             android:layout_margin="22dp"
+            android:layout_marginTop="39dp"
             android:drawableStart="@drawable/ic_account"
             android:drawableLeft="@drawable/ic_account"
+            android:gravity="center_horizontal"
             android:text="Account Informations"
             android:textAlignment="center"
             android:textSize="24sp"
-            app:fontFamily="sans-serif-black"
-            android:gravity="center_horizontal" />
+            app:fontFamily="sans-serif-black" />
+
+
         <TextView
-            android:id="@+id/email"
+            android:id="@+id/email_show"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:text="@string/xxxxxyyyy_gmail_com"
-            android:layout_marginBottom="39dp"
-            android:textColor="#000"
-            android:textSize="22sp" />
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Username :"
             android:layout_marginLeft="30dp"
+            android:gravity="start"
+            android:text="@string/email"
             android:textAlignment="textStart"
             android:textColor="#000"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:gravity="start" />
+            android:textStyle="bold" />
+
         <TextView
-            android:id="@+id/lastname"
+            android:id="@+id/fullname_show"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:text="Lastname :"
             android:layout_marginLeft="30dp"
-            android:textColor="#000"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:gravity="start" />
-        <TextView
-            android:id="@+id/firstname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Firstname :"
-            android:layout_marginLeft="30dp"
+            android:gravity="start"
+            android:text="@string/fullname"
             android:textAlignment="textStart"
             android:textColor="#000"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:gravity="start" />
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

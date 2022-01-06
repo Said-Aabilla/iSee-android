@@ -165,6 +165,8 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
 
         profileItem.setOnClickListener(view -> {
             Intent profileIntent = new Intent(this, ProfileActivity.class);
+            profileIntent.putExtra("fullname",getIntent().getStringExtra("fullname"));
+            profileIntent.putExtra("email",getIntent().getStringExtra("email"));
             startActivity(profileIntent);
         });
         settingsItem.setOnClickListener(view -> {

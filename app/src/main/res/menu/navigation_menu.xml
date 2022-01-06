@@ -5,15 +5,15 @@
     <item
         android:id="@+id/dashboardItem"
         android:icon="@drawable/baseline_dashboard_white_48"
-        android:title="Dashboard" />
+        android:title="@string/home" />
 
     <item
         android:id="@+id/settingsItem"
         android:icon="@drawable/baseline_play_circle_outline_white_48"
-        android:title="Settings" />
+        android:title="@string/settings" />
 
     <item
         android:id="@+id/profileItem"
         android:icon="@drawable/baseline_account_circle_white_48"
-        android:title="Profile" />
+        android:title="@string/profile" />
 </menu>
