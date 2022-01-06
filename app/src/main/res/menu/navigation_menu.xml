@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/dashboard"
+        android:id="@+id/dashboardItem"
         android:icon="@drawable/baseline_dashboard_white_48"
         android:title="Dashboard" />
 
     <item
-        android:id="@+id/playCircle"
+        android:id="@+id/settingsItem"
         android:icon="@drawable/baseline_play_circle_outline_white_48"
         android:title="Settings" />
 
     <item
-        android:id="@+id/customProfile"
+        android:id="@+id/profileItem"
         android:icon="@drawable/baseline_account_circle_white_48"
         android:title="Profile" />
 </menu>

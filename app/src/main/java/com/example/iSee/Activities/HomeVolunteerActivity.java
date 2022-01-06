@@ -2,6 +2,7 @@ package com.example.iSee.Activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -46,6 +48,7 @@ import com.google.android.gms.location.SettingsClient;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -59,6 +62,8 @@ import java.util.UUID;
 public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIew {
     IUpdateLocController updateLocController;
 
+    BottomNavigationItemView settingsItem;
+    BottomNavigationItemView profileItem;
     //    LOCALISATION HELPER VARIABLES
     private static final String TAG = "HomeVolunteerActivity";
     int LOCATION_REQUEST_CODE = 10001;
@@ -120,6 +125,8 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         rejectBtn = findViewById(R.id.rejectBtn);
         navMenu = findViewById(R.id.Bottom_menu);
         initialLayout = findViewById(R.id.initialLayout);
+        profileItem = findViewById(R.id.profileItem);
+        settingsItem = findViewById(R.id.settingsItem);
 //Animation
         Animation animation= AnimationUtils.loadAnimation(HomeVolunteerActivity.this,R.anim.rotate);
         (findViewById(R.id.imageView)).startAnimation(animation);
@@ -156,6 +163,14 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
             else toggleAudioBtn.setImageResource(R.drawable.ic_baseline_mic_off_24);
         });
 
+        profileItem.setOnClickListener(view -> {
+            Intent profileIntent = new Intent(this, ProfileActivity.class);
+            startActivity(profileIntent);
+        });
+        settingsItem.setOnClickListener(view -> {
+            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            startActivity(settingsIntent);
+        });
         setUpWebview();
     }
 //*************************************************************** Oncreate End ************************************************************************

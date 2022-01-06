@@ -36,7 +36,7 @@
                     android:layout_marginTop="40dp"
                     android:background="#FF9800"
                     android:shadowColor="#423434"
-                    android:text="GPS STATUS"
+                    android:text="@string/gps_settings"
                     android:textColor="#FFFFFF"
                     android:textColorHint="#372626" />
 
@@ -46,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
                     android:background="#FF9800"
-                    android:text="GPS SETTINGS"
+                    android:text="@string/gps_status"
                     android:textColor="#FAF6F6" />
 
                 <Button
@@ -59,7 +59,7 @@
                     android:layout_marginBottom="100dp"
                     android:background="#FFFEFE"
                     android:gravity="center"
-                    android:text="Delete Account"
+                    android:text="@string/delete_account"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="#D60505"
                     android:textSize="14sp" />
