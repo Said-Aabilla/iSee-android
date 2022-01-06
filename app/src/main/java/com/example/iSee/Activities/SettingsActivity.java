@@ -13,12 +13,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iSee.Controllers.impl.DeleteController;
 import com.example.iSee.R;
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 
 public class SettingsActivity extends AppCompatActivity {
     DeleteController deleteController;
+    BottomNavigationItemView homeItem;
+    BottomNavigationItemView profileItem;
     // Bundle extra =this.getIntent().getExtras();
     //String userEmail = extra.getString("email");
-    String userEmail = "jimouhsami@gmail.com";
+    String userEmail = "jimouhs@gmail.com";
 
 
     @Override
@@ -30,6 +33,8 @@ public class SettingsActivity extends AppCompatActivity {
         final Button b = findViewById(R.id.button01);
         final Button b2 = findViewById(R.id.button02);
         final Button b3 = findViewById(R.id.button03);
+        profileItem = findViewById(R.id.profileItem);
+        homeItem = findViewById(R.id.dashboardItem);
 
 
         b.setOnClickListener(new View.OnClickListener() {
@@ -59,9 +64,21 @@ public class SettingsActivity extends AppCompatActivity {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteController.onDelete("jimouhsami@gmail.com");
+                deleteController.onDelete("jimouhs@gmail.com");
 
             }
+        });
+
+        profileItem.setOnClickListener(view -> {
+            Intent profileIntent = new Intent(this, ProfileActivity.class);
+            startActivity(profileIntent);
+        });
+        homeItem.setOnClickListener(view -> {
+            Intent homeIntent = new Intent(this, HomeVolunteerActivity.class);
+            homeIntent.putExtra("fullname",getIntent().getStringExtra("fullname"));
+
+            startActivity(homeIntent);
+
         });
 
 

@@ -171,6 +171,7 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         });
         settingsItem.setOnClickListener(view -> {
             Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            settingsIntent.putExtra("fullname",getIntent().getStringExtra("fullname"));
             startActivity(settingsIntent);
         });
         setUpWebview();
