@@ -110,7 +110,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
                     tryOutCalls();
                 }
             };
-            handler.postDelayed(r, 2000);
+            handler.postDelayed(r, 3000);
             // hideProgressBar();
         });
         normalCallBtn.setOnClickListener(v -> {
@@ -125,8 +125,6 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
 
             //hideProgressBar();
         });
-
-        setUpWebview();
 
     }
 
@@ -191,6 +189,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
 
     @Override
     protected void onStart() {
+        setUpWebview();
         super.onStart();
 
     }

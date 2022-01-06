@@ -173,11 +173,11 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
             Intent settingsIntent = new Intent(this, SettingsActivity.class);
             startActivity(settingsIntent);
         });
-        setUpWebview();
     }
 //*************************************************************** Oncreate End ************************************************************************
     @Override
     protected void onStart() {
+        setUpWebview();
         super.onStart();
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             checkSettingsAndStartLocationUpdates();
@@ -361,7 +361,7 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
 
     @Override
     public void onBackPressed() {
-        fireBaseRef.child(username).child("incoming").setValue(null);
+        fireBaseRef.child(username).setValue(null);
     }
 
     @Override
