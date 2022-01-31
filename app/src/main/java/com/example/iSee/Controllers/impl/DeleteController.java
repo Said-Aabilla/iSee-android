@@ -1,11 +1,14 @@
 package com.example.iSee.Controllers.impl;
 
+
+
 import com.example.iSee.Controllers.facade.IDeleteController;
 import com.example.iSee.Services.IRetrofit;
 import com.example.iSee.Services.RetrofitService;
 
 import java.security.cert.CertificateException;
 import java.util.HashMap;
+import java.util.Map;
 
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.SSLContext;
@@ -29,10 +32,12 @@ public class DeleteController implements IDeleteController {
     //Attributs of this class
 
 
-    //Constructor
+
 
     @Override
     public void onDelete(String email) {
+
+
 
             HashMap<String, String> map = new HashMap<>();
             map.put("email", email);
@@ -53,4 +58,5 @@ public class DeleteController implements IDeleteController {
             });
 
         }
+
 }

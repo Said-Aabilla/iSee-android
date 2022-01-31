@@ -66,6 +66,9 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
                 Animation animation= AnimationUtils.loadAnimation(LoginActivity.this,R.anim.sample_anim);
                 (findViewById(R.id.login_btn)).startAnimation(animation);
 
+
+
+
                 if(rememberme.isChecked()){
                     SessionManager sessionManager=new SessionManager(LoginActivity.this,SessionManager.Rememberme_session);
                     sessionManager.createRememberMeSession(emailEdit.getText().toString().trim(),passwordEdit.getText().toString().trim());
@@ -104,9 +107,14 @@ public class LoginActivity extends AppCompatActivity implements ILoginView {
 
     @Override
     public void onLoginSuccess(String message, User user) {
+
+
+
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
         Intent volunteerIntent = new Intent(this, HomeVolunteerActivity.class);
         Intent visuallyImpairedIntent = new Intent(this, HomeImpairedActivity.class);
+
+
 
         visuallyImpairedIntent.putExtra("fullname",user.getFullname());
         visuallyImpairedIntent.putExtra("email",user.getEmail());

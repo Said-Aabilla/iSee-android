@@ -11,17 +11,16 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.iSee.Controllers.facade.IDeleteController;
 import com.example.iSee.Controllers.impl.DeleteController;
 import com.example.iSee.R;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 
 public class SettingsActivity extends AppCompatActivity {
-    DeleteController deleteController;
+    IDeleteController deleteController;
     BottomNavigationItemView homeItem;
     BottomNavigationItemView profileItem;
-    // Bundle extra =this.getIntent().getExtras();
-    //String userEmail = extra.getString("email");
-    String userEmail = "jimouhs@gmail.com";
+
 
 
     @Override
@@ -64,7 +63,15 @@ public class SettingsActivity extends AppCompatActivity {
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteController.onDelete("jimouhs@gmail.com");
+               try {
+                   deleteController.onDelete(getIntent().getStringExtra("email"));
+                   Intent fin = new Intent(SettingsActivity.this,LoginActivity.class);
+                   startActivity(fin);
+               }  catch(Exception e) {
+                   Toast.makeText(SettingsActivity.this, e.toString(),
+                           Toast.LENGTH_LONG).show();
+
+            }
 
             }
         });

@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,6 +21,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -85,6 +87,8 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
     boolean isAudio = true;
     boolean isVideo = true;
     boolean isPeerConnected = true;
+    Button tuto;
+
     //    FireBase instance
     DatabaseReference fireBaseRef = FirebaseDatabase.getInstance().getReference("users");
 
@@ -109,8 +113,12 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_home);
+
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
         locationRequest = LocationRequest.create();
         locationRequest.setInterval(5000);
@@ -127,6 +135,10 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         initialLayout = findViewById(R.id.initialLayout);
         profileItem = findViewById(R.id.profileItem);
         settingsItem = findViewById(R.id.settingsItem);
+        tuto=findViewById(R.id.Tuto_app);
+
+
+
 //Animation
         Animation animation= AnimationUtils.loadAnimation(HomeVolunteerActivity.this,R.anim.rotate);
         (findViewById(R.id.imageView)).startAnimation(animation);
@@ -171,9 +183,20 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         });
         settingsItem.setOnClickListener(view -> {
             Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            settingsIntent.putExtra("email",getIntent().getStringExtra("email"));
             settingsIntent.putExtra("fullname",getIntent().getStringExtra("fullname"));
+
             startActivity(settingsIntent);
         });
+
+        tuto.setOnClickListener(view -> {
+            Intent intent = new Intent(this, TipsActivity.class);
+            startActivity(intent);
+        });
+
+
+
+
     }
 //*************************************************************** Oncreate End ************************************************************************
     @Override

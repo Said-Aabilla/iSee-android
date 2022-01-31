@@ -41,6 +41,8 @@ public class ProfileActivity extends AppCompatActivity {
         });
         dashboardItem.setOnClickListener(view -> {
             Intent homeIntent = new Intent(this, HomeVolunteerActivity.class);
+            homeIntent.putExtra("fullname",getIntent().getStringExtra("fullname"));
+
             startActivity(homeIntent);
         });
     }
