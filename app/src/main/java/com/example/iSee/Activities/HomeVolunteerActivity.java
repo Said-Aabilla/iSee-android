@@ -330,9 +330,6 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
     @SuppressLint("MissingPermission")
     private void startLocationUpdates() {
         fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
-
-
-
     }
 
     private void stopLocationUpdates() {
@@ -386,6 +383,11 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
     @Override
     public void onBackPressed() {
         fireBaseRef.child(username).setValue(null);
+        //Switch Controls
+        webView.setVisibility(View.GONE);
+        navMenu.setVisibility(View.VISIBLE);
+        initialLayout.setVisibility(View.VISIBLE);
+        callLayout.setVisibility(View.GONE);
     }
 
     @Override
