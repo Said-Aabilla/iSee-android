@@ -314,10 +314,25 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
 
     @Override
     public void onBackPressed() {
+
         webView.setVisibility(View.GONE);
         fireBaseRef.child(username).child("incoming").setValue(null);
         navMenu.setVisibility(View.VISIBLE);
         initialLayout.setVisibility(View.VISIBLE);
+        setUpWebview();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUpWebview();
+
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        setUpWebview();
     }
 
     @Override

@@ -58,7 +58,7 @@ function startCall(otherUserId) {
               }]
         };
         navigator.getUserMedia({
-            audio: true,
+           // audio: true,
             video: constraints
 
         }, (stream) => {

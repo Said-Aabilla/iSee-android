@@ -66,12 +66,12 @@
                 <TextView
                     android:id="@+id/email_txt"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="35dp"
                     android:layout_marginTop="64dp"
                     android:layout_marginBottom="16dp"
                     android:text="@string/email"
                     android:textColor="@color/colorBlack"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/user_login"
@@ -92,7 +92,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/user_email"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="85dp"
                         android:inputType="text"
                         android:textColor="@color/colorBlack"
                         android:textCursorDrawable="@null" />
@@ -108,7 +108,7 @@
                     android:layout_marginBottom="16dp"
                     android:text="@string/password"
                     android:textColor="@color/colorBlack"
-                    android:textSize="18sp" />
+                    android:textSize="20sp" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/login_password"
@@ -128,7 +128,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/user_password"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="78dp"
                         android:inputType="textPassword"
                         android:textColor="@color/colorBlack" />
 
@@ -145,22 +145,26 @@
                     <CheckBox
                         android:id="@+id/remember_me"
                         style="@style/Widget.AppCompat.CompoundButton.CheckBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="168dp"
+                        android:layout_height="94dp"
                         android:layout_centerVertical="true"
                         android:text="@string/remember_me"
-                        android:textColor="@color/colorBlack" />
+                        android:textColor="@color/colorBlack"
+                        android:textSize="20sp" />
 
 
                     <Button
                         android:id="@+id/forget_btn"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="80dp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginRight="0dp"
                         android:background="#00000000"
                         android:text="@string/forget"
                         android:textAllCaps="false"
+                        android:textSize="20sp"
                         tools:ignore="RelativeOverlap" />
 
                 </RelativeLayout>
@@ -168,7 +172,7 @@
                 <TextView
                     android:id="@+id/login_btn"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="89dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginBottom="32dp"
                     android:background="@drawable/login_bordershape"

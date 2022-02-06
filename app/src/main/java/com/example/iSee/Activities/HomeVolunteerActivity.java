@@ -382,12 +382,26 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
 
     @Override
     public void onBackPressed() {
+        setUpWebview();
         fireBaseRef.child(username).setValue(null);
         //Switch Controls
         webView.setVisibility(View.GONE);
         navMenu.setVisibility(View.VISIBLE);
         initialLayout.setVisibility(View.VISIBLE);
         callLayout.setVisibility(View.GONE);
+        setUpWebview();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        setUpWebview();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        setUpWebview();
     }
 
     @Override
