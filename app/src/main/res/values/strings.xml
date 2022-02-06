@@ -169,6 +169,7 @@
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
     <string name="home">Home</string>
+    <string name="someone_is_calling">Someone is calling...</string>
     <string-array name="spinner_array">
         <item>French</item>
         <item>English</item>

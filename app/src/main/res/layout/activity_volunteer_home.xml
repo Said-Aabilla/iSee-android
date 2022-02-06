@@ -37,13 +37,12 @@
 
 
         <RelativeLayout
-            android:id="@+id/callLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#ccc"
             android:visibility="gone"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="parent"
+            android:id="@+id/callLayout"
+            android:layout_width="407dp"
+            android:layout_height="108dp"
+            android:background="#ccc"
+            android:backgroundTint="#FF9800"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -52,13 +51,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="20dp"
-                android:text="Someone is calling..."
-                android:textStyle="bold" />
+                android:text="@string/someone_is_calling"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"/>
 
             <ImageView
                 android:id="@+id/acceptBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="88dp"
+                android:layout_height="68dp"
                 android:layout_marginTop="15dp"
                 android:layout_marginRight="20dp"
                 android:layout_toStartOf="@id/rejectBtn"
@@ -68,8 +69,8 @@
 
             <ImageView
                 android:id="@+id/rejectBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="88dp"
+                android:layout_height="68dp"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="15dp"
