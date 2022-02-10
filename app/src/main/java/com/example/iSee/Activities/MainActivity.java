@@ -12,6 +12,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import com.example.iSee.Database.UserDbHelper;
+import com.example.iSee.Models.User;
 import com.example.iSee.R;
 import com.example.iSee.Services.SessionManager;
 import com.facebook.stetho.Stetho;
@@ -30,13 +31,23 @@ UserDbHelper userHelper = new UserDbHelper(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
         Stetho.initializeWithDefaults(this);
+
+
 //initialisations...
         if (isNetworkConnected()){
             SessionManager sessionManager=new SessionManager(this,SessionManager.Session_user);
             if (sessionManager.CheckLogin()){
-                Intent intent=new Intent(this,HomeVolunteerActivity.class);
-                intent.putExtra("email",sessionManager.getEmailFromSession());
-                startActivity(intent);
+                User user=userHelper.getUser(sessionManager.getEmailFromSession());
+                if (user.getVision().trim().equals("true")){
+                    Intent intent=new Intent(this,HomeVolunteerActivity.class);
+                    intent.putExtra("email",user.getEmail().trim());
+                    startActivity(intent);
+                }else{
+                    Intent intent=new Intent(this,HomeImpairedActivity.class);
+                    intent.putExtra("email",user.getEmail().trim());
+                    startActivity(intent);
+                }
+
             }
         }else{
             Intent intent=new Intent(this, NoInternetActivity.class);
