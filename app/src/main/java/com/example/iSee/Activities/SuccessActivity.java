@@ -19,6 +19,7 @@ public class SuccessActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(), HomeVolunteerActivity.class);
+                intent.putExtra("email",getIntent().getStringExtra("email").trim());
                 startActivity(intent);
             }
         });

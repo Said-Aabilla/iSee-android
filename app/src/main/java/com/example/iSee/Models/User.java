@@ -7,7 +7,7 @@ public class User implements IUser{
 
    private String fullname, email,password;
    private String langage;
-   private boolean vision;
+   private String vision;
    private double latitude,longitude;
 
    public User(String email,String password) {
@@ -15,7 +15,7 @@ public class User implements IUser{
         this.password=password;
     }
 
-    public User(String email, String password, String fullname, String langage, boolean vision) {
+    public User(String email, String password, String fullname, String langage, String vision) {
        this.email=email;
        this.password=password;
        this.fullname=fullname;
@@ -29,13 +29,49 @@ public class User implements IUser{
        this.longitude=longitude;
     }
 
+    public User() {
+
+    }
+
+    public User(String aTrue) {
+       this.vision=aTrue;
+    }
+
+
+    public void setFullname(String fullname) {
+        this.fullname = fullname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setLangage(String langage) {
+        this.langage = langage;
+    }
+
+    public void setVision(String vision) {
+        this.vision = vision;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
     @Override
       public String getFullname() {
           return fullname;
       }
     @Override
-    public boolean getVision() {
+    public String getVision() {
         return vision;
     }
     @Override

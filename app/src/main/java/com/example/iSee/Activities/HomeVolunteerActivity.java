@@ -35,9 +35,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import com.example.iSee.Controllers.facade.IUpdateLocController;
 import com.example.iSee.Controllers.impl.UpdateLocController;
+import com.example.iSee.Database.UserDbHelper;
+import com.example.iSee.Models.User;
 import com.example.iSee.R;
 import com.example.iSee.Views.ICallVIew;
 import com.example.iSee.Views.WebJavascriptInterface;
+import com.facebook.stetho.Stetho;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -58,11 +61,17 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
 
+import okhttp3.OkHttpClient;
+
 public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIew {
     IUpdateLocController updateLocController;
+    UserDbHelper userHelper = new UserDbHelper(this);
 
     BottomNavigationItemView settingsItem;
     BottomNavigationItemView profileItem;
@@ -117,6 +126,8 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_home);
+        Stetho.initializeWithDefaults(this);
+
 
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -139,13 +150,16 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
 
 
 
+
 //Animation
         Animation animation= AnimationUtils.loadAnimation(HomeVolunteerActivity.this,R.anim.rotate);
         (findViewById(R.id.imageView)).startAnimation(animation);
         //Get User fullname & email
         TextView usernameText = findViewById(R.id.user_name);
-        usernameText.setText("Hi " + getIntent().getStringExtra("fullname") + " !");
-        String email=getIntent().getStringExtra("email");
+         String email=getIntent().getStringExtra("email");
+// Get user from SQLite
+        User user=userHelper.getUser(email);
+        usernameText.setText("Hi " +user.getFullname()+ " !");
         updateLocController=new UpdateLocController(this);
 // update user location every 10 s
         final Handler handler = new Handler();
@@ -160,7 +174,7 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         }, delay);
  //_________________________________________________________________
 
-        username = Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
+        username = Objects.requireNonNull(user.getFullname()).trim();
         findViewById(R.id.toggleAudioBtn).setOnClickListener(v -> {
             isAudio = !isAudio;
             webView.post(new Runnable() {
@@ -177,15 +191,13 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
 
         profileItem.setOnClickListener(view -> {
             Intent profileIntent = new Intent(this, ProfileActivity.class);
-            profileIntent.putExtra("fullname",getIntent().getStringExtra("fullname"));
-            profileIntent.putExtra("email",getIntent().getStringExtra("email"));
+            profileIntent.putExtra("fullname",user.getFullname().trim());
+            profileIntent.putExtra("email",user.getEmail().trim());
             startActivity(profileIntent);
         });
         settingsItem.setOnClickListener(view -> {
             Intent settingsIntent = new Intent(this, SettingsActivity.class);
-            settingsIntent.putExtra("email",getIntent().getStringExtra("email"));
-            settingsIntent.putExtra("fullname",getIntent().getStringExtra("fullname"));
-
+            settingsIntent.putExtra("email",user.getEmail().trim());
             startActivity(settingsIntent);
         });
 

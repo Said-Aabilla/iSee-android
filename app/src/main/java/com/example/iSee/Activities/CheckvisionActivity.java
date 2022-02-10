@@ -19,7 +19,7 @@ public class CheckvisionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(CheckvisionActivity.this,SignupActivity.class);
-                intent.putExtra("vision",true);
+                intent.putExtra("vision","true");
                 startActivity(intent);
 
             }
@@ -28,7 +28,7 @@ public class CheckvisionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent =new Intent(CheckvisionActivity.this,SignupActivity.class);
-                intent.putExtra("vision",false);
+                intent.putExtra("vision","false");
                 startActivity(intent);
 
             }

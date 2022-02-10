@@ -11,7 +11,7 @@ public class SessionManager {
     SharedPreferences.Editor editor;
     Context context;
 
-    public static final String Session_user="userLoginSessions";
+    public static final String Session_user="userLoginSession";
     public static final String Rememberme_session="rememberMe";
 
 //Login Session
@@ -35,14 +35,12 @@ public class SessionManager {
          * Sign up session
          */
     }
-    public void createLoginSession(String fullname,String email, String password,String language,boolean vision){
+    public void createLoginSession(String email,String password){
 
 
         editor.putBoolean(IS_LOGIN,true);
-        editor.putString(KEY_FULLNAME,fullname);
         editor.putString(KEY_EMAIL,email);
         editor.putString(KEY_PASSWORD,password);
-        editor.putString(KEY_LANGUAGE,language);
         editor.commit();
     }
     public HashMap <String,String> getUsersDetailFromSession(){
@@ -53,6 +51,9 @@ public class SessionManager {
         userData.put(KEY_PASSWORD,userSession.getString(KEY_PASSWORD,null));
         userData.put(KEY_LANGUAGE,userSession.getString(KEY_LANGUAGE,null));
        return  userData;
+    }
+    public String getEmailFromSession(){
+        return userSession.getString(KEY_EMAIL,null);
     }
     public boolean CheckLogin(){
         if (userSession.getBoolean(IS_LOGIN,false)){

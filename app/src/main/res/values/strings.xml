@@ -3,7 +3,8 @@
     <string name="welcome">Welcome to iSee</string>
     <string name="explore">Explore us</string>
     <string name="welcomescreen">welcomescreen</string>
-    <string name="facebook_app_id">[APP_ID]</string> <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
+    <string name="facebook_app_id">[APP_ID]</string>
+    <string name="fb_login_protocol_scheme">fb[APP_ID]</string>
     <string name="Or">Or</string>
     <string name="login">Log in</string>
     <string name="signup">Sign up</string>
@@ -175,6 +176,6 @@
         <item>English</item>
         <item>Arabic</item>
     </string-array>
-        <string name="dialog_message">Welcome to Alert Dialog</string>
-        <string name="dialog_title">Javatpoint Alert Dialog</string>
+    <string name="dialog_message">Welcome to Alert Dialog</string>
+    <string name="dialog_title">Javatpoint Alert Dialog</string>
 </resources>

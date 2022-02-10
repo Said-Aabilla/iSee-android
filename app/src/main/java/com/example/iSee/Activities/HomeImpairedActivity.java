@@ -29,6 +29,7 @@ import androidx.core.content.ContextCompat;
 
 import com.example.iSee.Controllers.facade.ICloseUsersController;
 import com.example.iSee.Controllers.impl.CloseUsersController;
+import com.example.iSee.Database.UserDbHelper;
 import com.example.iSee.Models.User;
 import com.example.iSee.R;
 import com.example.iSee.Views.ICallVIew;
@@ -57,7 +58,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
 
     private static final String TAG = "HomeImpairedActivity";
     int LOCATION_REQUEST_CODE = 10001;
-
+    UserDbHelper userHelper = new UserDbHelper(this);
     FusedLocationProviderClient fusedLocationProviderClient;
 
 
@@ -84,6 +85,9 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call_home);
+// Get the user from SQLite
+        String email=getIntent().getStringExtra("email");
+        User user=userHelper.getUser(email);
 
         //localisation
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
@@ -99,8 +103,8 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         normalCallBtn = findViewById(R.id.normalcallBtn);
         locationCallBtn = findViewById(R.id.locationCallBtn);
 
-        username = Objects.requireNonNull(getIntent().getStringExtra("fullname")).trim();
-        languages.add(Objects.requireNonNull(getIntent().getStringExtra("language")).trim());
+        username = Objects.requireNonNull(user.getFullname()).trim();
+        languages.add(Objects.requireNonNull(user.getLanguage()).trim());
 
         locationCallBtn.setOnClickListener(v -> {
             //showProgressBar();

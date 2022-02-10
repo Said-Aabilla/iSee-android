@@ -7,8 +7,8 @@
     tools:context=".Activities.MainActivity">
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="402dp"
+        android:layout_height="725dp"
         android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -43,13 +43,12 @@
                 android:text="Voyons ce monde Ensemble "
                 android:textColor="@color/colorGrayDark"
                 android:textSize="18sp"
-                app:fontFamily="sans-serif-medium"
-                />
+                app:fontFamily="sans-serif-medium" />
 
             <ImageView
                 android:id="@+id/eye"
-                android:layout_width="256dp"
-                android:layout_height="112dp"
+                android:layout_width="247dp"
+                android:layout_height="75dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/isee"
@@ -57,7 +56,7 @@
 
             <TextView
                 android:id="@+id/login_btn"
-                android:layout_width="match_parent"
+                android:layout_width="315dp"
                 android:layout_height="107dp"
                 android:layout_marginTop="32dp"
                 android:background="@drawable/login_bordershape"
@@ -81,7 +80,7 @@
 
             <TextView
                 android:id="@+id/signup_btn"
-                android:layout_width="match_parent"
+                android:layout_width="318dp"
                 android:layout_height="107dp"
                 android:layout_marginBottom="32dp"
                 android:background="@drawable/signup_bordershape"
@@ -96,21 +95,22 @@
                 android:id="@+id/signupgoogle"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="@string/signup"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="3dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="3dp" />
+                android:text="@string/signup" />
+
             <com.facebook.login.widget.LoginButton
                 android:id="@+id/login_button"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginLeft="22dp"
-                android:layout_marginRight="22dp"
                 android:layout_gravity="center"
+                android:layout_marginLeft="22dp"
                 android:layout_marginTop="3dp"
+                android:layout_marginRight="22dp"
                 android:textAlignment="center"
 
-/>
+                />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

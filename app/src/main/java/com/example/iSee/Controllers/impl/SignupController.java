@@ -1,12 +1,20 @@
 package com.example.iSee.Controllers.impl;
 
+import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
+
+import com.example.iSee.Activities.SignupActivity;
 import com.example.iSee.Controllers.facade.ISignupController;
+import com.example.iSee.Database.UserDbHelper;
 import com.example.iSee.Models.User;
 import com.example.iSee.Services.IRetrofit;
 import com.example.iSee.Services.RetrofitService;
 import com.example.iSee.Views.ISignupView;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import retrofit2.Call;
@@ -19,6 +27,7 @@ public class SignupController implements ISignupController {
   Retrofit retrofit = RetrofitService.getRetrofitInstance();
      IRetrofit retrofitInterface= retrofit.create(IRetrofit.class);
     Map<String, String> map = new HashMap<>() ;
+
 //Attributs of this class
 
     ISignupView signupView;
@@ -28,7 +37,7 @@ public class SignupController implements ISignupController {
     }
 
     @Override
-    public void onSignup(String email, String password,String fullname,String langage,boolean vision) {
+    public void onSignup(String email, String password,String fullname,String langage,String vision) {
         final User user=new User(email,password,fullname,langage,vision);
         int signupcode=user.isValid();
         if (signupcode==0){
@@ -55,7 +64,7 @@ public class SignupController implements ISignupController {
 
                     if (response.code() == 200) {
                         try {
-                            signupView.onSignupSuccess("Signup Success !");
+                            signupView.onSignupSuccess("Signup Success !",email);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

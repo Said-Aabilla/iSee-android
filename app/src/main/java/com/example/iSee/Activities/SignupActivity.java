@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -11,14 +12,17 @@ import android.widget.Toast;
 
 import com.example.iSee.Controllers.facade.ISignupController;
 import com.example.iSee.Controllers.impl.SignupController;
+import com.example.iSee.Database.UserDbHelper;
 import com.example.iSee.R;
 import com.example.iSee.Views.ISignupView;
+
+import java.util.ArrayList;
 
 
 public class SignupActivity extends AppCompatActivity implements ISignupView {
 //variables
     ISignupController signupController;
-
+    UserDbHelper userHelper = new UserDbHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,7 @@ public class SignupActivity extends AppCompatActivity implements ISignupView {
         setContentView(R.layout.activity_signup);
 
         signupController = new SignupController(this);
+
 
 //initialisation
 
@@ -36,7 +41,7 @@ public class SignupActivity extends AppCompatActivity implements ISignupView {
         final EditText lastnameEdit = findViewById(R.id.user_lastName);
         Spinner spinner = (Spinner) findViewById(R.id.myspinner);
         final String langage = spinner.getSelectedItem().toString();
-        final boolean vision = getIntent().getExtras().getBoolean("vision");
+        final String vision = getIntent().getExtras().getString("vision");
 
 
         (findViewById(R.id.login_btn)).setOnClickListener(new View.OnClickListener() {
@@ -51,9 +56,13 @@ public class SignupActivity extends AppCompatActivity implements ISignupView {
             public void onClick(View view) {
                 signupController.onSignup(emailEdit.getText().toString().trim(), passwordEdit.getText().toString().trim(),
                         lastnameEdit.getText().toString().trim() + " " + firstnameEdit.getText().toString().trim(), langage, vision);
-
-               /* Intent intent=new Intent(getApplicationContext(), SuccessActivity.class);
-                startActivity(intent);*/
+                try {
+                    userHelper.InsertUser(lastnameEdit.getText().toString().trim() + " " + firstnameEdit.getText().toString().trim(),
+                            emailEdit.getText().toString().trim(),passwordEdit.getText().toString().trim(),langage,vision);
+                    Toast.makeText(SignupActivity.this,"Local database updated",Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
 
 
             }
@@ -68,10 +77,11 @@ public class SignupActivity extends AppCompatActivity implements ISignupView {
         });
     }
     @Override
-    public void onSignupSuccess(String message)  {
+    public void onSignupSuccess(String message,String email)  {
         Toast.makeText(this,message,Toast.LENGTH_LONG).show();
        // Thread.sleep(5000);
           Intent intent=new Intent(getApplicationContext(), SuccessActivity.class);
+          intent.putExtra("email",email);
                 startActivity(intent);
     }
 

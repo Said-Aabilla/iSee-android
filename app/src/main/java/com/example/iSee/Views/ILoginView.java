@@ -1,8 +1,6 @@
 package com.example.iSee.Views;
 
-import com.example.iSee.Models.User;
-
 public interface ILoginView {
-   void onLoginSuccess(String message, User user);
+   void onLoginSuccess(String message, String email);
    void onLoginFailed(String message);
 }
