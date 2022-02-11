@@ -17,9 +17,12 @@ import com.example.iSee.Database.UserDbHelper;
 import com.example.iSee.Models.User;
 import com.example.iSee.R;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.example.iSee.Services.SessionManager;
+
+
 
 public class SettingsActivity extends AppCompatActivity {
-    IDeleteController deleteController;
+    IDeleteController deleteController= new DeleteController();
     BottomNavigationItemView homeItem;
     BottomNavigationItemView profileItem;
     UserDbHelper userHelper = new UserDbHelper(this);
@@ -38,6 +41,8 @@ public class SettingsActivity extends AppCompatActivity {
         final Button b = findViewById(R.id.button01);
         final Button b2 = findViewById(R.id.button02);
         final Button b3 = findViewById(R.id.button03);
+        final Button b4 = findViewById(R.id.button4);
+
         profileItem = findViewById(R.id.profileItem);
         homeItem = findViewById(R.id.dashboardItem);
 
@@ -50,8 +55,19 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-
         b2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SessionManager sessionManager=new SessionManager(SettingsActivity.this,SessionManager.Session_user);
+                sessionManager.LogoutUserFromSession();
+                Intent fin = new Intent(SettingsActivity.this,LoginActivity.class);
+                startActivity(fin);
+                finish();
+            }
+        });
+
+
+        b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -70,11 +86,15 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                try {
-                   deleteController.onDelete(user.getEmail().trim());
+                   userHelper.DeleteUser(user.getEmail().trim());
+                   SessionManager sessionManager=new SessionManager(SettingsActivity.this,SessionManager.Session_user);
+                    sessionManager.LogoutUserFromSession();
                    Intent fin = new Intent(SettingsActivity.this,LoginActivity.class);
                    startActivity(fin);
+                   finish();
+
                }  catch(Exception e) {
-                   Toast.makeText(SettingsActivity.this, e.toString(),
+                   Toast.makeText(SettingsActivity.this, "Failed to delete",
                            Toast.LENGTH_LONG).show();
 
             }
