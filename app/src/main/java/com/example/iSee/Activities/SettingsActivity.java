@@ -86,6 +86,7 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                try {
+                   // deleteController(email);
                    userHelper.DeleteUser(user.getEmail().trim());
                    SessionManager sessionManager=new SessionManager(SettingsActivity.this,SessionManager.Session_user);
                     sessionManager.LogoutUserFromSession();
