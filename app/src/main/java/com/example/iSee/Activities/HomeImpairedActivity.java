@@ -4,6 +4,9 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -15,7 +18,6 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -86,8 +88,8 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call_home);
 // Get the user from SQLite
-        String email=getIntent().getStringExtra("email");
-        User user=userHelper.getUser(email);
+        String email = getIntent().getStringExtra("email");
+        User user = userHelper.getUser(email);
 
         //localisation
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);

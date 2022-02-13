@@ -6,13 +6,14 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.Settings;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -27,12 +28,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
 import com.example.iSee.Controllers.facade.IUpdateLocController;
 import com.example.iSee.Controllers.impl.UpdateLocController;
 import com.example.iSee.Database.UserDbHelper;
@@ -40,7 +43,6 @@ import com.example.iSee.Models.User;
 import com.example.iSee.R;
 import com.example.iSee.Views.ICallVIew;
 import com.example.iSee.Views.WebJavascriptInterface;
-import com.facebook.stetho.Stetho;
 import com.google.android.gms.common.api.ResolvableApiException;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationCallback;
@@ -61,13 +63,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 import java.util.UUID;
-
-import okhttp3.OkHttpClient;
 
 public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIew {
     IUpdateLocController updateLocController;
@@ -98,6 +95,10 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
     boolean isPeerConnected = true;
     Button tuto;
 
+    //ringtone vars
+    Uri defaultRingtoneUri;
+    Ringtone defaultRingtone;
+
     //    FireBase instance
     DatabaseReference fireBaseRef = FirebaseDatabase.getInstance().getReference("users");
 
@@ -126,7 +127,6 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_home);
-        Stetho.initializeWithDefaults(this);
 
 
 
@@ -148,6 +148,9 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         settingsItem = findViewById(R.id.settingsItem);
         tuto=findViewById(R.id.Tuto_app);
 
+        //ringtone
+        defaultRingtoneUri = RingtoneManager.getActualDefaultRingtoneUri(this, RingtoneManager.TYPE_RINGTONE);
+        defaultRingtone = RingtoneManager.getRingtone(this, defaultRingtoneUri);
 
 
 
@@ -277,13 +280,13 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
                 });
             }
         });
-
     }
 
     private void onCallRequest(String caller) {
         if (caller == null) return;
         callLayout.setVisibility(View.VISIBLE);
         incomingCallText.setText(caller + " is calling !");
+        defaultRingtone.play();
 
         acceptBtn.setOnClickListener(v -> {
             fireBaseRef.child(username).child("connId").setValue(connId);
@@ -293,10 +296,12 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
             initialLayout.setVisibility(View.GONE);
             callLayout.setVisibility(View.GONE);
             callControlLayout.setVisibility(View.VISIBLE);
+            defaultRingtone.stop();
         });
         rejectBtn.setOnClickListener(v -> {
             fireBaseRef.child(username).child("incoming").setValue(null);
             callLayout.setVisibility(View.GONE);
+            defaultRingtone.stop();
         });
     }
 
