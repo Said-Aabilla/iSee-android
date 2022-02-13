@@ -10,7 +10,8 @@
         android:layout_height="729dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:id="@+id/textView4"
@@ -66,7 +67,7 @@
             android:foregroundGravity="center_vertical"
             android:translationX="150dp"
             android:translationY="60dp"
-            app:srcCompat="@drawable/png_clipart_smiley_face_happiness_yellow_circle_miscellaneous_face" />
-
+             />
+        />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

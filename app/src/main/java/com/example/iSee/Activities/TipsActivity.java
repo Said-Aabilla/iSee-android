@@ -12,7 +12,7 @@ public class TipsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.tips_activity);
+        //setContentView(R.layout.tips_activity);
 
     }
 
