@@ -176,6 +176,12 @@
         <item>English</item>
         <item>Arabic</item>
     </string-array>
+    <string-array name="settings">
+    <item>GPS settings</item>
+    <item>GPS statuts</item>
+    <item>Log out</item>
+        <item>Delete Acount</item>
+    </string-array>
     <string name="dialog_message">Welcome to Alert Dialog</string>
     <string name="dialog_title">Javatpoint Alert Dialog</string>
 </resources>

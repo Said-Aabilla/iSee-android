@@ -70,7 +70,7 @@
             android:layout_marginRight="15dp"
             android:adjustViewBounds="true"
             android:scaleType="centerInside"
-            android:src="@drawable/common_full_open_on_phone" />
+            android:src="@drawable/setting" />
 
     </RelativeLayout>
 
