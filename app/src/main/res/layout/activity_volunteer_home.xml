@@ -20,12 +20,17 @@
         android:id="@+id/callControlLayout">
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#99000000"
             android:padding="4dp"
+            android:layout_width="88dp"
+            android:layout_height="68dp"
             android:src="@drawable/ic_baseline_mic_24"
             android:id="@+id/toggleAudioBtn"/>
+        <ImageView
+            android:padding="4dp"
+            android:layout_width="88dp"
+            android:layout_height="68dp"
+            android:src="@drawable/cancel_ic"
+            android:id="@+id/endCallBtn"/>
 
     </LinearLayout>
 
