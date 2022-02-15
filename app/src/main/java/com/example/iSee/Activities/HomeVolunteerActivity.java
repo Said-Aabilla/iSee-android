@@ -211,8 +211,10 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
             startActivity(intent);
         });
 
-
-
+        findViewById(R.id.endCallBtn).setOnClickListener(view -> {
+            finish();
+            startActivity(getIntent());
+        });
 
     }
 //*************************************************************** Oncreate End ************************************************************************
@@ -408,7 +410,8 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
         navMenu.setVisibility(View.VISIBLE);
         initialLayout.setVisibility(View.VISIBLE);
         callLayout.setVisibility(View.GONE);
-        setUpWebview();
+        finish();
+        startActivity(getIntent());
     }
 
     @Override

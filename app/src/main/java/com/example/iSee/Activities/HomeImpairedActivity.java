@@ -4,9 +4,6 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.location.Location;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +15,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
@@ -69,6 +67,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
     Button locationCallBtn;
     Button normalCallBtn;
     WebView webView;
+    LinearLayout callControlLayout;
     ConstraintLayout initialLayout;
     BottomNavigationView navMenu;
     String username = "";
@@ -104,6 +103,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
         progressBar = findViewById(R.id.progressBar);
         normalCallBtn = findViewById(R.id.normalcallBtn);
         locationCallBtn = findViewById(R.id.locationCallBtn);
+        callControlLayout = findViewById(R.id.callControlLayout);
 
         username = Objects.requireNonNull(user.getFullname()).trim();
         languages.add(Objects.requireNonNull(user.getLanguage()).trim());
@@ -130,6 +130,11 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
             handler.postDelayed(r, 2000);
 
             //hideProgressBar();
+        });
+
+        findViewById(R.id.endCallBtn).setOnClickListener(view -> {
+            finish();
+            startActivity(getIntent());
         });
 
     }
@@ -298,6 +303,7 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
                         //SWitch controls
                         navMenu.setVisibility(View.GONE);
                         initialLayout.setVisibility(View.GONE);
+                        callControlLayout.setVisibility(View.VISIBLE);
 
                         String call = "javascript:startCall" + "(" + "\"" + (String) snapshot.getValue() + "\"" + ")";
                         webView.evaluateJavascript(call, null);
@@ -320,12 +326,14 @@ public class HomeImpairedActivity extends AppCompatActivity implements ICallVIew
 
     @Override
     public void onBackPressed() {
-
+        callControlLayout.setVisibility(View.GONE);
         webView.setVisibility(View.GONE);
         fireBaseRef.child(username).child("incoming").setValue(null);
         navMenu.setVisibility(View.VISIBLE);
         initialLayout.setVisibility(View.VISIBLE);
         setUpWebview();
+        finish();
+        startActivity(getIntent());
     }
 
     @Override
