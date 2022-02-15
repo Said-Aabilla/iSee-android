@@ -199,8 +199,10 @@ public class HomeVolunteerActivity extends AppCompatActivity implements ICallVIe
             startActivity(profileIntent);
         });
         settingsItem.setOnClickListener(view -> {
-            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            Intent settingsIntent = new Intent(this, MapsActivity.class);
             settingsIntent.putExtra("email",user.getEmail().trim());
+            settingsIntent.putExtra("longitude",33.2597143332841);
+            settingsIntent.putExtra("latitude",-8.515136867579159);
             startActivity(settingsIntent);
         });
 

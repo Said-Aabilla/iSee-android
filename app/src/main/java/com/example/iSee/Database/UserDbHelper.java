@@ -76,7 +76,6 @@ public UserDbHelper(Context context) {
 //Delete user
     public void DeleteUser(String email ) {
         SQLiteDatabase bd = this.getWritableDatabase();
-        ContentValues valeurs = new ContentValues();
         bd.delete(UserContrat.UserTable.Table_Name,"email= ?",new String[]{email});
     }
 //Get user

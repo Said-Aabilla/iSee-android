@@ -168,6 +168,7 @@
     <string name="fullname">fullname</string>
     <string name="dashboard">Dashboard</string>
     <string name="settings">Settings</string>
+    <string name="maps">Maps</string>
     <string name="profile">Profile</string>
     <string name="home">Home</string>
     <string name="someone_is_calling">Someone is calling...</string>
@@ -177,11 +178,13 @@
         <item>Arabic</item>
     </string-array>
     <string-array name="settings">
-    <item>GPS settings</item>
-    <item>GPS statuts</item>
-    <item>Log out</item>
+        <item>GPS settings</item>
+        <item>GPS statuts</item>
+        <item>Log out</item>
         <item>Delete Acount</item>
     </string-array>
     <string name="dialog_message">Welcome to Alert Dialog</string>
     <string name="dialog_title">Javatpoint Alert Dialog</string>
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">AIzaSyBfg8dquyZQIzl8DZ11e-amMlPWDfv0pgg</string>
+    <string name="access_token">pk.eyJ1IjoiYWJkb3UzNCIsImEiOiJja3puMjZ0c3QwNHRtMnZsY3gweGMycHoxIn0.HqUXD9hjBmJ4gZjvajvP0Q</string>
 </resources>

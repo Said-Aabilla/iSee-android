@@ -40,6 +40,8 @@
         <activity android:name=".Activities.HomeImpairedActivity" />
         <activity android:name=".Activities.SettingsActivity" />
         <activity android:name=".Activities.TipsActivity" />
+        <activity android:name=".Activities.MapsActivity" />
+
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"

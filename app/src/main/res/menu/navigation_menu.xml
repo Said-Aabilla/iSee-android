@@ -9,8 +9,8 @@
 
     <item
         android:id="@+id/settingsItem"
-        android:icon="@drawable/baseline_play_circle_outline_white_48"
-        android:title="@string/settings" />
+        android:icon="@drawable/maps"
+        android:title="@string/maps" />
 
     <item
         android:id="@+id/profileItem"

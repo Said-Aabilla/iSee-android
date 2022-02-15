@@ -5,7 +5,7 @@
       <map>
         <entry key="..\:/Users/lenovo/Desktop/Isee_two/iSee-android/app/src/main/res/layout/activity_settings.xml" value="0.16893115942028986" />
         <entry key="..\:/Users/lenovo/Desktop/Isee_two/iSee-android/app/src/main/res/layout/activity_volunteer_home.xml" value="0.16893115942028986" />
-        <entry key="..\:/Users/lenovo/Desktop/Isee_two/iSee-android/app/src/main/res/layout/tips_activity.xml" value="0.4" />
+        <entry key="..\:/Users/lenovo/Desktop/Isee_two/iSee-android/app/src/main/res/layout/tips_activity.xml" value="0.16259057971014493" />
         <entry key="..\:/Users/lenovo/Desktop/Isee_two/iSee-android/app/src/main/res/menu/navigation_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee-android/app/src/main/res/drawable/login_bordershape.xml" value="0.22037037037037038" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee-android/app/src/main/res/layout/about_courses.xml" value="0.12771739130434784" />
@@ -57,16 +57,30 @@
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee/iSee-android/app/src/main/res/layout/terms_of_use.xml" value="0.19610507246376813" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee/iSee-android/app/src/main/res/menu/navigation_menu.xml" value="0.209375" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSee/iSee-android/app/src/main/res/xml/network_security_config.xml" value="0.1" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/drawable/accept_call.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/drawable/back_button_white.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/drawable/bottom_item_selector.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/drawable/bottom_navigation_shape.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/drawable/ic_play_circle_filled_black_24dp.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/drawable/round_button.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/drawable/round_image_background.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/drawable/setting.xml" value="0.22205128205128205" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/drawable/setting_icon.xml" value="0.22205128205128205" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/drawable/settings.xml" value="0.22552083333333334" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/activity_login.xml" value="0.20652173913043478" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/activity_maps.xml" value="0.10182370820668693" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/activity_maps2.xml" value="0.209375" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/activity_no_internet.xml" value="0.25" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/activity_profile_1.xml" value="0.209375" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/activity_settings.xml" value="0.18" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/activity_volunteer_home.xml" value="0.12395833333333334" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/activity_welcome.xml" value="0.20652173913043478" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/hhhh.xml" value="0.1" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/profile_activity.xml" value="0.22" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/search.xml" value="0.209375" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/layout/tips_activity.xml" value="0.1453125" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/iSeeApp/app/src/main/res/menu/navigation_menu.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/activity_call_home.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_forgot_password.xml" value="0.1984375" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.22" />

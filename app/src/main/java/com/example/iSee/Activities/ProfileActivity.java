@@ -105,18 +105,19 @@ public class ProfileActivity extends AppCompatActivity {
 
                                        }
 
+
                                }
                            }
                        });
                        builder.show();});
         settingsItem.setOnClickListener(view -> {
-            Intent settingsIntent = new Intent(this, SettingsActivity.class);
+            Intent settingsIntent = new Intent(this, MapsActivity.class);
             settingsIntent.putExtra("email",getIntent().getStringExtra("email"));
             startActivity(settingsIntent);
         });
         dashboardItem.setOnClickListener(view -> {
             Intent homeIntent = new Intent(this, HomeVolunteerActivity.class);
-            homeIntent.putExtra("fullname",user.getFullname().trim());
+            homeIntent.putExtra("email",user.getEmail().trim());
             startActivity(homeIntent);
         });
     }
